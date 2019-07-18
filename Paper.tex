@@ -1,0 +1,739 @@
+\iffalse
+
+Before sending further, pass this check
+list:\leq\leq\leq\leq
+  [ ] find and resolve all "???"
+  [ ] Spell-check
+  [ ] order of using/defining abbreviations
+  [ ] citation order (use RefTest)
+  [ ] figure order & reference order
+  [ ] Check LaTeX  output files (*.log) for warnings
+  [ ] Check BibTeX output (screen) for warnings
+  [ ] update PACS
+  [ ] decide on color figures
+  [ ] Re-read paper in the morning
+
+After completing this list, if you made
+at least one correction, re-do this
+check-list from the beginning, until no
+corrections will be done.
+
+\fi
+
+%Decide here the style of the document
+\documentclass[aip,apl,reprint,superscriptaddress,onecolumn]{revtex4-1}
+%\documentclass[twocolumn,prb,showpacs,superscriptaddress]{revtex4}
+%\documentclass[twocolumn,prl,showpacs,superscriptaddress]{revtex4}
+% \usepackage{authblk}
+% = two column
+
+%\documentclass[aps,preprint,showpacs,preprintnumbers,amsmath,amssymb]{revtex4}
+% = single column
+
+% Some other (several out of many) possibilities
+%\documentclass[preprint,aps]{revtex4}
+%\documentclass[preprint,aps,draft]{revtex4}
+
+%%% Normales LaTeX oder pdfLaTeX? %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% ==> Das neue if-Kommando "\ifpdf" wird an einigen wenigen
+%%% ==> Stellen ben\"{o}tigt, um die Kompatibilit\"{a}t zwischen
+%%% ==> LaTeX und pdfLaTeX herzustellen.
+%\newif\ifpdf
+%\ifx\pdfoutput\undefined
+%    \pdffalse               %normales LaTeX wird ausgef\"{u}hrt
+%\else
+%    \pdfoutput=1
+%    \pdftrue                %pdfLaTeX wird ausgef\"{u}hrt
+%\fi
+%%% Packages f\"{u}r Grafiken & Abbildungen %%%%%%%%%%%%%%%%%%%%%%
+%\ifpdf %%Einbindung von Grafiken mittels \includegraphics{datei}
+%    \usepackage[pdftex]{graphicx} %%Grafiken in pdfLaTeX
+%\else
+    \usepackage[dvips]{graphicx} %%Grafiken und normales LaTeX
+%\fi
+%%\usepackage[hang]{subfigure} %%Mehrere Teilabbildungen in einer Abbildung
+%%\usepackage{pst-all} %%PSTricks - nicht verwendbar mit pdfLaTeX
+
+
+%\usepackage{graphicx, dblfloatfix}
+\usepackage[english]{babel}
+\usepackage{blindtext}
+\usepackage{dcolumn}% Align table columns on decimal point
+\usepackage{bm}% bold math
+\usepackage{ulem}
+\usepackage[dvips]{color} % textcolor
+\usepackage{float}
+\usepackage{graphicx} %use graph format
+\usepackage{epstopdf}
+\usepackage{booktabs}
+%\usepackage{caption2}
+%\usepackage{caption}
+%\usepackage{changes}
+%\definechangesauthor[name={per cusse}, color=orange]{per}
+%\setremarkmarkup{(#2)}
+\newcommand{\gguide}{{\it Preparing graphics for IOP Publishing journals}}
+%\nofiles
+%%%%%%%% shortcuts %%%%%%%%%%%%%%%%%%%%%%%%%%5
+%by Edward
+\newcommand{\ie}{{\it i.e. }}
+\newcommand{\eg}{{\it e.g. }}
+%\newcommand{\cf}{{\it cf. }}
+\newcommand{\vs}{{\it vs. }}
+\newcommand{\etc}{{\it etc. }}
+\newcommand{\etal}{{\it et~al. }}
+%by Stefan
+\newcommand{\bl}{\ensuremath{\beta_L}}
+\newcommand{\bc}{\ensuremath{\beta_C}}
+\newcommand{\G}{\ensuremath{\Gamma}}
+\newcommand{\iac}{\ensuremath{i_{ac}}}
+\newcommand{\Iac}{\ensuremath{I_{ac}}}
+\newcommand{\omdach}{\ensuremath{\omega/\omega_0}}
+\newcommand{\vbar}{\ensuremath{\bar{v}}}
+\newcommand{\deltadot}{\ensuremath{\dot{\delta}}}
+\newcommand{\xdot}{\ensuremath{\dot{x}}}
+\newcommand{\vphi}{\ensuremath{V(\Phi_a)}}
+%by Dieter
+\newcommand{\gapprox}{{\scriptscriptstyle\stackrel{>}{\sim}}}
+\newcommand{\lapprox}{{\scriptscriptstyle\stackrel{<}{\sim}}}
+\newcommand{\dg}{\ensuremath{^\circ}}
+%\newcommand{\ybco}{\ensuremath{\mathrm{YBa_2Cu_3O_{7-\delta}}} }
+\newcommand{\VIac}{\ensuremath{{<V>}(I_{ac})}}
+\newcommand{\Vavg}{\ensuremath{<V>}}
+\newcommand{\VPhi}{\ensuremath{V_\Phi}}
+%by Albert
+\newcommand{\bibdir}{bib/}      %directory for bib-files
+\newcommand{\actdir}{eps-fig/}  %directory for eps-files\newcommand{\fig}[1]{Fig.~\ref{#1}}
+\newcommand{\tab}[1]{Table~\ref{#1}}
+\newcommand{\co}[2]{\ifcase #1 \or #2 \fi}
+
+%by Stefan G.
+\newcommand{\bscco}{Bi$_{2}$Sr$_{2}$CaCu$_{2}$O$_{8}$\,}
+\newcommand{\ybco}{YBa$_{2}$Cu$_{3}$O$_{7}$\,}
+\newcommand{\micron}{$\,\mu$m}
+\newcommand{\celsius}{\,$^\circ$C}
+\newcommand{\angstrom}{\,$\mathring{A}$}
+
+%by Wang
+\newcommand\degrees[1]{\ensuremath{#1^\circ}}
+
+%by Dieter
+\newcommand{\blue}{\textcolor{blue}}
+
+
+%\renewcommand{\captionlabeldelim}{.}
+%change here to get in order!
+%\bibliographystyle{alpha}
+%\bibliographystyle{apsprl}
+
+\newif\ifnote
+
+%%%%%%% Notizen Einschalten: %
+%\notetrue                   %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%\ifnote{\sf\textcolor{blue}{\sout{...}\;}}\fi
+
+
+\begin{document}
+\renewcommand{\figurename}{FIG.}
+\title{A study of thermal effects in superconducting terahertz modulator by low temperature scanning laser microscope}
+\author{Chao Han}
+
+\affiliation{Research Institute of Superconductor Electronics (RISE), School of Electronic Science and Engineering, Nanjing University, Nanjing 210093, China}
+
+\author{Chun Li}
+
+\affiliation{Research Institute of Superconductor Electronics (RISE), School of Electronic Science and Engineering, Nanjing University, Nanjing 210093, China}
+\affiliation{College of Information Science and Technology, Nanjing Forestry University, 159 Longpan Road, Nanjing 210037, China }
+
+\author{Jingbo Wu }
+\thanks{Electronic mail: jbwu@nju.edu.cn}
+\affiliation{Research Institute of Superconductor Electronics (RISE), School of Electronic Science and Engineering, Nanjing University, Nanjing 210093, China}
+
+
+\author{Xianjing Zhou}
+\thanks{Electronic mail: xjzhou@nju.edu.cn}
+\affiliation{Research Institute of Superconductor Electronics (RISE), School of Electronic Science and Engineering, Nanjing University, Nanjing 210093, China}
+
+
+\author{Jun Li}
+\affiliation{Research Institute of Superconductor Electronics (RISE), School of Electronic Science and Engineering, Nanjing University, Nanjing 210093, China}
+
+\author{Biaobing Jin}
+\affiliation{Research Institute of Superconductor Electronics (RISE), School of Electronic Science and Engineering, Nanjing University, Nanjing 210093, China}
+
+\author{Huabing Wang}
+\affiliation{Research Institute of Superconductor Electronics (RISE), School of Electronic Science and Engineering, Nanjing University, Nanjing 210093, China}
+\author{Peiheng Wu}
+\affiliation{Research Institute of Superconductor Electronics (RISE), School of Electronic Science and Engineering, Nanjing University, Nanjing 210093, China}
+
+\date{\today}% It is always \today, today,
+             %  but any date may be explicitly specified
+
+\begin{abstract}
+We use low temperature scanning laser microscope (LTSLM) to study the Joule power distribution of superconducting (SC) terahertz (THz) modulator. The LTSLM scanning images record the SC state transformation process under different DC bias voltages. The change of THz transmission spectra can be well explained by LTSLM observed thermal effect in the devices. Hotspots are present in one THz modulator and the transmission spectra changes a lot after the hotspots show up. This result will be useful to understand the mechanism of SC THz modulator and design higher performance THz moduators.
+
+\end{abstract}
+\maketitle
+ \section{Introduction}
+With the development of terahertz (THz) technology, a variety of THz functional devices are in great demand. Superconducting (SC) THz metamaterials offer a promising avenue to develop high performance THz devices because of the remarkable low ohmic loss\cite{Zhang2012} and good tuning property of SC film at THz frequencies. SC metamaterials show high sensitivity to external stimuli such as laser illumination\cite{Savinov2012a}, magnetic field\cite{Jin2010,Pimenov2005}, temperature\cite{Li2010,Fedotov2010,Chen2010a}, and current\cite{Savinov2012}. The change of SC property with the applied current has been utilized to develop THz modulator with a modulation speed up to 1 MHz\cite{Savinov2012,Li2016}.
+ Compared with room temperature THz modulators\cite{Zhang2015,Lee2012}, the SC modulator has single-layer structure and can be integrated with other high performance THz components working at cryogenic environment. Despite of that, the device performance of SC modulator is still far away from its limit. If the state switching of SC THz modulator is dominated by hot electron effect, the modulation speed can be several gigahertz\cite{Sizov2010,Semenov2002}. The big gap between the ideal modulator and the present one is greatly related with the physical mechanism of SC modulator. Modulation speed of a SC modulator may be constrained by many factors. The metamaterial-based SC modulator consists of identical resonant structures, however, the current and temperature distribution across a unit cell can be nonuniform.  The SC-to-normal state transition at different regions may occur at different electric bias. These factors may affect the modulation speed and modulation depth. In order to improve the performance of SC modulator, the physical mechanism of the SC modulator and state transition with electric bias needs to be clarified firstly.
+ \par
+Low temperature scanning laser microscope (LTSLM) offers us a powerful tool to investigate the physical mechanism of SC devices. Previously, it has been used to measure the thermal effects of lots of SC microstructures\cite{Wagenknecht2006,Fritzsche2006,Wang2009,Wang2009a,Wang2010,Guenon2010,Werner2011,Gross2012,Werner2013,Sivakov2000,Sivakov1996}. In LTSLM system, a focused laser beam with a spot size of several micron is used as perturbation to slightly warm up a small district of the DC biased sample and that may induce a voltage response $\Delta V$ across the sample. By scanning the laser beam within a specific area of the sample, we can get an image of $\Delta V$ data at each point.
+
+For SC sample, the appearance of $\Delta V$ signal means the transition from SC state to normal state occurs inside the illuminated area, and its value is corresponding to how much area experiences phase transition under the laser's illumination. By taking LTSLM images under different DC bias voltages , we can get localized phase transition information of the SC modulator with a resolution of several micron. Therefore, the LTSLM will be useful for us to evaluate the role of thermal effects in SC modulator and optimize the device design.
+
+In this letter, we perform experimental study on the distribution of SC phase transition in SC THz modulator under different DC bias voltages using LTSLM. The relationship between thermal effects and modulation performance is comprehensively studied based on LTSLM images and theoretical analysis.
+\par
+\section{Samples and measurement techniques}
+We measured two different THz modulator samples using LTSLM. As shown in Fig. 1, each sample is fabricated onto a 1-mm-thick MgO substrate. The THz modulator consists of NbN film made SC metamaterial and gold electrodes on all sides of the samples. Each unit cell is connected by NbN wires. The transition temperature of NbN film is 14.6 K. The thickness of NbN film in sample 1 and 2 are 50 nm and 100 nm respectively. The geometric size of a unit cell in each sample is also shown in Fig. 1. The fabrication process has been reported in detail previously\cite{Li2016,Li2017}. As for the LTSLM measurement, the optic beam is mounted onto a piezo made x-y-z three dimensional micro-positioner which is controlled by computer to scan the surface of the sample for measurement. During measurement, the temperature of cold platform is maintained around 4.8 K ($\pm$0.3 K). The optic beam (wavelength = 1310 nm) of a laser diode is focused by a grin lens onto the sample surface (spot size 1.5-2\,$\mu$m) after passing through the optic fiber which transmits the optic signal into the cryostat. The optical signal is modulated by TTL signal at 5 kHz to improve the signal to noise ratio. The SC sample is mounted onto a helium closed-cycle cryostat with LTSLM system. In our measurement, all of our samples are DC voltage-biased by Keithley 2400. Since that the THz modulator only allows two-terminal measurement,  contact resistance is subtracted after measurement.
+\par
+%Figure Sketch %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.6\columnwidth,clip]{figure1}
+\caption{(a) Sketch of the measured THz modulator with the applied DC bias voltages  and laser. (b) The geometry of a unit cell in sample 1: $a=108\,\mu$m, $b=46\,\mu$m, $c=16\,\mu$m, and $w=5\,\mu$m, with a lattice periodicity of $P=120\,\mu$m. (c) The geometry of a unit cell in sample 2: $a=72\,\mu$m, $b=33\,\mu$m, $c=24\,\mu$m, $w=5\,\mu$m, with a lattice periodicity $P= 84\,\mu$m.
+ }
+%\caption{ (a) \replaced {Sketch of the measured THz modulator with the applied electric bias and laser} {Sketch of the THz modulator samples we measured}. (b) The geometry of a unit cell in sample 1: $a=108\,\mu$m, $b=46\,\mu$m, $c=16\,\mu$m, and $w=5\,\mu$m with a lattice periodicity of $P=120\,\mu$m. (c) The geometry of a unit cell of sample 2: $a=40\,\mu$m, $b=68\,\mu$m, $c=62\,\mu$m, $w=5\,\mu$m, $h=28\,\mu$m with a lattice periodicity $P= 84\,\mu$m. }
+\label{fig:Sketch_sample}
+\end{figure}
+%Figure Sketch end %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\section{LTSLM Scan results}
+
+Figures 2(c) and 2(d) show the optical image and scanning images of sample 1 at different DC bias voltages .
+Taking into account of the periodic structures of the THz modulator, we selected only a small region including several unit cells for imaging. With the increase of bias voltage from 0 to 1.2 V, current gradually reduces, indicating that more and more area turns into normal state. Meanwhile, $\Delta V$ signal can be detected when the phase transition is induced by the localized heating. We find that the scanning images experience remarkable changes with the change of bias voltage. In image (II), there are remarkable hotspots formed at the nodes which connect the two unit cells and their $\Delta V$ signal is as high as 20 $\mu$V. With the increase of the bias voltage, the whole metamaterial is `lit up' while the node area gradually fades as plotted in images (III) and (IV). When the bias voltage exceeds 0.49 V, the hotspots almost disappear since their $\Delta V$ value is nearly the same level as other area. It means the hotspots area has totally gone into normal state. With the further increase of the bias voltage,
+the signal of the whole sample becomes stronger no matter whether it is SC metamaterial or bare substrate area as shown in images (V)-(VI).
+We can infer that the transition from SC to normal state occurs everywhere in SC metamaterial except the nodes. When the bias voltage increases to 0.64 V, the signal reaches the maximum (except previous hotspots area). After that, the signal gradually drops until it is hardly detected as displayed in image (VIII). One interesting thing is that we can get $\Delta V$ signal from the split ring resonator though there is no current flowing through it. The thin NbN wires illuminated by laser beam absorb the photons to break SC electron pairs and the absorbed energy is dissipated into heat. Because of high thermal conductance of MgO substrate, the SC structure nearby is heated and phase transition can be triggered. Thus we can observe the signal from these regions where no current flowing through. Due to the size of one unit is very small, the temperature difference between the split ring resonator and square resonator (current flowing through) is very small. So we can find that the signals from these two separated regions are nearly the same. In fact, the signal from split ring resonator is still a little smaller.
+\par
+ \begin{figure}[H]
+ \centering
+\includegraphics[width=1\linewidth,clip]{figure2}
+\caption{(a) The measured current voltage characteristics ($I-V$) curve (green line) of sample 1 at 4.9 K.  The red dash line is the corresponding fitting curve when the sample is turning from SC state to normal state. (b) The curve of \(\frac{\partial P}{\partial V}\) and V. (c) The optical image of sample 1. (d) The LTSLM scan images at different DC bias voltages . The corresponding bias points of images (I)-(VIII) are denoted in (a).
+}
+
+\end{figure}
+The optical and scanning images at various voltage bias of sample 2 are shown in Figs. 3(c) and 3(d). With the increase of bias voltage, the LTSLM images exhibit obvious changes like sample 1. When the voltage is lower than 0.25 V, $\Delta V$ signal can only be detectable in fish-scaled resonator (FSR) part. With the further increase of bias voltage, the whole sample is `lit up'. The signals both at NbN wires and bare substrate regions reach the maximum value when voltage increases to 0.65 V and then gradually drop. Different from sample 1, hotspots are not observed in sample 2.
+\par
+%Figure Images %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[H]
+\centering
+\includegraphics[width=1\linewidth,clip]{figure3}
+\caption{(a) The measured $I-V$ curve (green line) of sample 2 at 4.9 K.  The red dash line is the corresponding fitting curve when the sample is turning from SC state to normal state. (b) The curve of \(\frac{\partial P}{\partial V}\) and V. (c) The optical image of the sample 2. (d) The LTSLM scan images at different DC bias voltages . The corresponding bias points of images (I)-(VI) are denoted in (a).}
+\label{fig:Sample3-LTSLM}
+\end{figure}
+%Figure Images end %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+For both sample 1 and sample 2, when the applied bias voltage increases, the signal across the whole sample including the bare substrate area becomes stronger. We think it can be attributed to the heat dissipated by NbN structure and gold electrodes.
+The heating leads to the increase of temperature in NbN wires. Besides that, the MgO substrate also has a temperature gradient distribution around NbN wires due to its high thermal conductance. The higher the Joule power is, the higher the substrate temperature
+will be. The laser heating causes a slight increase of the substrate temperature and results in the SC phase transition in some area. To prove that, we also calculate the Joule power consumed by sample 1 and sample 2 based on their $I-V$ curves. We use the function of \(\frac{\partial P}{\partial V}\) to evaluate the condition that the Joule power of sample changes with voltage and $ P $ represents the Joule power of the sample. When it reaches 0, the Joule power of sample reaches its max value. Firstly, the exponential function ($f(x)=a e^{b x}+c e^{d x}$) is used to fit the $I-V$ curves and the fitting parameters are $a=20.61$, $b=-3.572$, $c=9.075$, $d=-0.7091$ for sample 1 and $a=24.59$, $b=-7.282$, $c=9.234$, $d=-1.172$ for sample 2 respectively. The fitting curves (red dash lines) are plotted in Figs. 2(a) and 3(a). We can see that, the Joule power of two samples both reaches their maximum when voltage is about 0.7 V. And these two values are close to the voltage that $\Delta V$ signal of the bare substrate regions achieves the highest level. The results indicate that the strength of $\Delta V$ signal strongly correlates with the Joule power consumed in samples.
+\par
+ Between the LTSLM images of two samples, a distinct difference is the presence of hotspots in sample 1 before the whole sample is `lit up'. It can be attributed to the specific structure of sample 1. As shown in Fig. 1(b), the hotspots
+%are corresponding to
+are located at the nodes connecting two unit cells and the current is flowing from the left to right side. For a unit cell, two paths in the outer square ring resonator are in connection with the node. Therefore, the flowing current in a node is the sum of current flowing through the two paths. When the applied current through the nodes exceeds the critical current, the SC-to-normal state transition first occurs at these nodes. With the further increase of the bias voltage, the localized heating at the nodes results in phase transition in the areas nearby. Consequently, hotspots appear at these nodes in LTSLM images. In contrast, as displayed in Fig. 1(c), there is only one current path in a unit cell of sample 2 which is in connection between two nodes. Thus, the current flow is nearly uniform in the whole current path. In that case, nodes cannot go into normal state ahead of other regions. That is why we can't see hotspots appear in sample 2.
+ \par
+ \section{Transmission Spectra test results}
+
+ In the following, we investigate the relationship between the thermal effects and the transmission spectra of two samples. Figure 4 shows the transmission spectra of sample 1 and sample 2 measured by low temperature THz time domain spectroscopy (TDS) system. The $I-V$ curves of two samples are also measured. We find these curves have a difference in critical current compared with those obtained in LTSLM system. In SC state, though the heat generated by the contact resistance under the same current bias is the same, the temperature increase of the sample can be different because of the different thermal load and thermal conductance in the cryostats of two experimental setup.
+ \par
+ \begin{figure}[H]
+ \centering
+\includegraphics[width=0.7\linewidth,clip]{figure4}
+\caption{The measured THz transmission spectra with different DC bias voltages  at 4.5 K for sample 1 (a) and sample 2 (b). The different color is corresponding to different electric bias. The insets on the top right show their $I-V$ curves. The colored dots in insets denote the bias points in the transmission spectra with the same color.}
+\end{figure}
+ As shown in Fig. 4(a), when the applied voltage is slightly above zero, the nodes turn into normal state and hotspots appear, the resonant deeps and transmission spectra are obvious. Here we define the hotspot state of sample 1 to be the state that hotspots start to appear at the nodes area, and the $\Delta V$ signal from other area still can not be observed. We make numerical simulation of the THz tranmission spectra in different state to evaluate the changes from SC state to hotspot state. We totally simulate 3 different states of this sample. For its hotspot mode, we define the dark area in the right inset of Fig. 5 to be the hotspot area which has changed into normal state. As displayed in Fig. 5, we can see that the resonant characteristics becomes less remarkable when sample 1 turns from SC state to hotspot state. In our simulation, sample 1 is unbiased. We just consider the electrical conductance change when locally phase transform happens. That is why our simulation results is different from measured data from Fig. 4, we cannot observe the shift of resonance deeps in Fig. 5.
+With further increase of bias voltage, the transmission spectra still experience remarkable changes until the whole sample goes into normal state. For sample 2, the transmission spectra at zero voltage bias changes obviously with increase of the current. When the sample goes into normal state, the resonant deeps in transmission spectra are not notable and show little dependence on the bias voltage.
+ %Figure Images %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[tb]
+\includegraphics[width=0.6\linewidth,clip]{figure5}
+\caption{The simulated transmission spectra of sample 1 when it is in different states.}
+\end{figure}
+%Figure Images end %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\par
+ Based on the analysis above , the tuning of the transmission spectra with DC bias voltages can be well explained by thermal effects of samples. According to the studies on thermal effect devices, the response speed mainly depends on the thermal relaxation time $(\tau)$ and $\tau = C/G $, where $ C $ and $ G $ are the thermal capacitance and thermal conductance of the device\cite{Sizov2010,Semenov2002}. It means that decreasing the thermal capacitance or increasing the thermal conductance can be used to speed up the modulation. Thermal conductance is an inherent property of the materials. When experiencing a phase transform process, the change process of thermal conductance for wether the whole sample all part of the sample should be the same. In sample 1, the hotspots only take up a small portion of the NbN structure. Correspondingly, their thermal capacitance is much smaller than that of the whole sample. By utilizing the switch from SC state to hotspot state, a relatively higher modulation speed may be achieved. Despite of that, we notice that the modulation depth calculated from Figs. 4(a) and 5 is not high. Inspired by the work on the THz semiconductor modulators\cite{Zhang2015,Zhang2016}, if the localized SC-to-normal state transition at nodes could induce the resonant mode conversion, the modulation depth can be greatly increased.
+ \par
+ \section{Conclusions}
+In conclusion, we utilize the LTSLM to image the SC-to-normal state transition in SC THz modulation devices under different bias voltage. The LTSLM works as a good tool to study the thermodynamic condition of SC modulator and understand its physical mechanism. Based on the scanning images and theoretical analysis, the thermal effect is demonstrated playing an important role in the modulation of THz transmission. Hotspots are observed in LTSLM images of one SC THz modulator and they have great effect on changing the transmission spectra. This kind of characteristics may be valuable for improving the modulation speed of SC modulators. This work will be of great help to develop high performance SC THz modulators and other functional devices.
+\par
+\section{Acknowledgements}
+We gratefully acknowledge financial support by the National Natural Science Foundation of China (Nos. 61727805, 61611130069, 61521001, 61501220, 61771234, 61701219, 61671234, 61571219), the Fundamental Research Funds for the Central Universities, Program for Changjiang Scholars and Innovative Research Team in University (PCSIRT)and Jiangsu Key Laboratory of Advanced Techniques for Manipulating Electromagnetic Waves, Jiangsu Provincial Natural Science Fund (BK20150561 and BK20170649) and the NKRDP of China (Grant No. 2016YFA0301802).
+\begin{thebibliography}{26}%
+\makeatletter
+\providecommand \@ifxundefined [1]{%
+ \@ifx{#1\undefined}
+}%
+\providecommand \@ifnum [1]{%
+ \ifnum #1\expandafter \@firstoftwo
+ \else \expandafter \@secondoftwo
+ \fi
+}%
+\providecommand \@ifx [1]{%
+ \ifx #1\expandafter \@firstoftwo
+ \else \expandafter \@secondoftwo
+ \fi
+}%
+\providecommand \natexlab [1]{#1}%
+\providecommand \enquote  [1]{``#1''}%
+\providecommand \bibnamefont  [1]{#1}%
+\providecommand \bibfnamefont [1]{#1}%
+\providecommand \citenamefont [1]{#1}%
+\providecommand \href@noop [0]{\@secondoftwo}%
+\providecommand \href [0]{\begingroup \@sanitize@url \@href}%
+\providecommand \@href[1]{\@@startlink{#1}\@@href}%
+\providecommand \@@href[1]{\endgroup#1\@@endlink}%
+\providecommand \@sanitize@url [0]{\catcode `\\12\catcode `\$12\catcode
+  `\&12\catcode `\#12\catcode `\^12\catcode `\_12\catcode `\%12\relax}%
+\providecommand \@@startlink[1]{}%
+\providecommand \@@endlink[0]{}%
+\providecommand \url  [0]{\begingroup\@sanitize@url \@url }%
+\providecommand \@url [1]{\endgroup\@href {#1}{\urlprefix }}%
+\providecommand \urlprefix  [0]{URL }%
+\providecommand \Eprint [0]{\href }%
+\providecommand \doibase [0]{http://dx.doi.org/}%
+\providecommand \selectlanguage [0]{\@gobble}%
+\providecommand \bibinfo  [0]{\@secondoftwo}%
+\providecommand \bibfield  [0]{\@secondoftwo}%
+\providecommand \translation [1]{[#1]}%
+\providecommand \BibitemOpen [0]{}%
+\providecommand \bibitemStop [0]{}%
+\providecommand \bibitemNoStop [0]{.\EOS\space}%
+\providecommand \EOS [0]{\spacefactor3000\relax}%
+\providecommand \BibitemShut  [1]{\csname bibitem#1\endcsname}%
+\let\auto@bib@innerbib\@empty
+%</preamble>
+\bibitem [{\citenamefont {Zhang}\ \emph {et~al.}(2012)\citenamefont {Zhang},
+  \citenamefont {Wu}, \citenamefont {Jin}, \citenamefont {Ji}, \citenamefont
+  {Kang}, \citenamefont {Xu}, \citenamefont {Chen}, \citenamefont {Tonouchi},\
+  and\ \citenamefont {Wu}}]{Zhang2012}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {C.~H.}\ \bibnamefont
+  {Zhang}}, \bibinfo {author} {\bibfnamefont {J.~B.}\ \bibnamefont {Wu}},
+  \bibinfo {author} {\bibfnamefont {B.~B.}\ \bibnamefont {Jin}}, \bibinfo
+  {author} {\bibfnamefont {Z.~M.}\ \bibnamefont {Ji}}, \bibinfo {author}
+  {\bibfnamefont {L.}~\bibnamefont {Kang}}, \bibinfo {author} {\bibfnamefont
+  {W.~W.}\ \bibnamefont {Xu}}, \bibinfo {author} {\bibfnamefont
+  {J.}~\bibnamefont {Chen}}, \bibinfo {author} {\bibfnamefont {M.}~\bibnamefont
+  {Tonouchi}}, \ and\ \bibinfo {author} {\bibfnamefont {P.~H.}\ \bibnamefont
+  {Wu}},\ }\href {\doibase 10.1364/OE.20.000042} {\bibfield  {journal}
+  {\bibinfo  {journal} {Opt. Express}\ }\textbf {\bibinfo {volume} {20}},\
+  \bibinfo {pages} {42} (\bibinfo {year} {2012})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Savinov}\ \emph
+  {et~al.}(2012{\natexlab{a}})\citenamefont {Savinov}, \citenamefont
+  {Tsiatmas}, \citenamefont {Buckingham}, \citenamefont {Fedotov},
+  \citenamefont {{de Groot}},\ and\ \citenamefont {Zheludev}}]{Savinov2012a}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {V.}~\bibnamefont
+  {Savinov}}, \bibinfo {author} {\bibfnamefont {A.}~\bibnamefont {Tsiatmas}},
+  \bibinfo {author} {\bibfnamefont {A.~R.}\ \bibnamefont {Buckingham}},
+  \bibinfo {author} {\bibfnamefont {V.~A.}\ \bibnamefont {Fedotov}}, \bibinfo
+  {author} {\bibfnamefont {P.~A.~J.}\ \bibnamefont {{de Groot}}}, \ and\
+  \bibinfo {author} {\bibfnamefont {N.~I.}\ \bibnamefont {Zheludev}},\ }\href
+  {\doibase 10.1038/srep00450} {\bibfield  {journal} {\bibinfo  {journal} {Sci.
+  Rep.}\ }\textbf {\bibinfo {volume} {2}},\ \bibinfo {pages} {450} (\bibinfo
+  {year} {2012}{\natexlab{a}})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Jin}\ \emph {et~al.}(2010)\citenamefont {Jin},
+  \citenamefont {Zhang}, \citenamefont {Engelbrecht}, \citenamefont {Pimenov},
+  \citenamefont {Wu}, \citenamefont {Xu}, \citenamefont {Cao}, \citenamefont
+  {Chen}, \citenamefont {Xu}, \citenamefont {Kang},\ and\ \citenamefont
+  {Wu}}]{Jin2010}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {B.}~\bibnamefont
+  {Jin}}, \bibinfo {author} {\bibfnamefont {C.}~\bibnamefont {Zhang}}, \bibinfo
+  {author} {\bibfnamefont {S.}~\bibnamefont {Engelbrecht}}, \bibinfo {author}
+  {\bibfnamefont {A.}~\bibnamefont {Pimenov}}, \bibinfo {author} {\bibfnamefont
+  {J.}~\bibnamefont {Wu}}, \bibinfo {author} {\bibfnamefont {Q.}~\bibnamefont
+  {Xu}}, \bibinfo {author} {\bibfnamefont {C.}~\bibnamefont {Cao}}, \bibinfo
+  {author} {\bibfnamefont {J.}~\bibnamefont {Chen}}, \bibinfo {author}
+  {\bibfnamefont {W.}~\bibnamefont {Xu}}, \bibinfo {author} {\bibfnamefont
+  {L.}~\bibnamefont {Kang}}, \ and\ \bibinfo {author} {\bibfnamefont
+  {P.}~\bibnamefont {Wu}},\ }\href {\doibase 10.1364/OE.18.017504} {\bibfield
+  {journal} {\bibinfo  {journal} {Opt. Express}\ }\textbf {\bibinfo {volume}
+  {18}},\ \bibinfo {pages} {17504} (\bibinfo {year} {2010})}\BibitemShut
+  {NoStop}%
+\bibitem [{\citenamefont {Pimenov}\ \emph {et~al.}(2005)\citenamefont
+  {Pimenov}, \citenamefont {Loidl}, \citenamefont {Przyslupski},\ and\
+  \citenamefont {Dabrowski}}]{Pimenov2005}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {A.}~\bibnamefont
+  {Pimenov}}, \bibinfo {author} {\bibfnamefont {A.}~\bibnamefont {Loidl}},
+  \bibinfo {author} {\bibfnamefont {P.}~\bibnamefont {Przyslupski}}, \ and\
+  \bibinfo {author} {\bibfnamefont {B.}~\bibnamefont {Dabrowski}},\ }\href
+  {\doibase 10.1103/PhysRevLett.95.247009} {\bibfield  {journal} {\bibinfo
+  {journal} {Phys. Rev. Lett.}\ }\textbf {\bibinfo {volume} {95}},\ \bibinfo
+  {pages} {247009} (\bibinfo {year} {2005})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Li}\ \emph {et~al.}(2010)\citenamefont {Li},
+  \citenamefont {Liu}, \citenamefont {Meng},\ and\ \citenamefont
+  {Zhu}}]{Li2010}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {P.}~\bibnamefont
+  {Li}}, \bibinfo {author} {\bibfnamefont {Y.}~\bibnamefont {Liu}}, \bibinfo
+  {author} {\bibfnamefont {Y.}~\bibnamefont {Meng}}, \ and\ \bibinfo {author}
+  {\bibfnamefont {M.}~\bibnamefont {Zhu}},\ }\href {\doibase
+  10.1088/0022-3727/43/48/485401} {\bibfield  {journal} {\bibinfo  {journal}
+  {J. Phys. D. Appl. Phys.}\ }\textbf {\bibinfo {volume} {43}},\ \bibinfo
+  {pages} {485401} (\bibinfo {year} {2010})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Fedotov}\ \emph {et~al.}(2010)\citenamefont
+  {Fedotov}, \citenamefont {Tsiatmas}, \citenamefont {Shi}, \citenamefont
+  {Buckingham}, \citenamefont {de~Groot}, \citenamefont {Chen}, \citenamefont
+  {Wang},\ and\ \citenamefont {Zheludev}}]{Fedotov2010}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {V.~A.}\ \bibnamefont
+  {Fedotov}}, \bibinfo {author} {\bibfnamefont {A.}~\bibnamefont {Tsiatmas}},
+  \bibinfo {author} {\bibfnamefont {J.~H.}\ \bibnamefont {Shi}}, \bibinfo
+  {author} {\bibfnamefont {R.}~\bibnamefont {Buckingham}}, \bibinfo {author}
+  {\bibfnamefont {P.}~\bibnamefont {de~Groot}}, \bibinfo {author}
+  {\bibfnamefont {Y.}~\bibnamefont {Chen}}, \bibinfo {author} {\bibfnamefont
+  {S.}~\bibnamefont {Wang}}, \ and\ \bibinfo {author} {\bibfnamefont {N.~I.}\
+  \bibnamefont {Zheludev}},\ }\href {\doibase 10.1364/OE.18.009015} {\bibfield
+  {journal} {\bibinfo  {journal} {Opt. Express}\ }\textbf {\bibinfo {volume}
+  {18}},\ \bibinfo {pages} {9015} (\bibinfo {year} {2010})}\BibitemShut
+  {NoStop}%
+\bibitem [{\citenamefont {Chen}\ \emph {et~al.}(2010)\citenamefont {Chen},
+  \citenamefont {Yang}, \citenamefont {Singh}, \citenamefont {O'Hara},
+  \citenamefont {Azad}, \citenamefont {Trugman}, \citenamefont {Jia},\ and\
+  \citenamefont {Taylor}}]{Chen2010a}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {H.~T.}\ \bibnamefont
+  {Chen}}, \bibinfo {author} {\bibfnamefont {H.}~\bibnamefont {Yang}}, \bibinfo
+  {author} {\bibfnamefont {R.}~\bibnamefont {Singh}}, \bibinfo {author}
+  {\bibfnamefont {J.~F.}\ \bibnamefont {O'Hara}}, \bibinfo {author}
+  {\bibfnamefont {A.~K.}\ \bibnamefont {Azad}}, \bibinfo {author}
+  {\bibfnamefont {S.~A.}\ \bibnamefont {Trugman}}, \bibinfo {author}
+  {\bibfnamefont {Q.~X.}\ \bibnamefont {Jia}}, \ and\ \bibinfo {author}
+  {\bibfnamefont {A.~J.}\ \bibnamefont {Taylor}},\ }\href {\doibase
+  10.1103/PhysRevLett.105.247402} {\bibfield  {journal} {\bibinfo  {journal}
+  {Phys. Rev. Lett.}\ }\textbf {\bibinfo {volume} {105}},\ \bibinfo {pages}
+  {247402} (\bibinfo {year} {2010})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Savinov}\ \emph
+  {et~al.}(2012{\natexlab{b}})\citenamefont {Savinov}, \citenamefont {Fedotov},
+  \citenamefont {Anlage}, \citenamefont {{de Groot}},\ and\ \citenamefont
+  {Zheludev}}]{Savinov2012}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {V.}~\bibnamefont
+  {Savinov}}, \bibinfo {author} {\bibfnamefont {V.~A.}\ \bibnamefont
+  {Fedotov}}, \bibinfo {author} {\bibfnamefont {S.~M.}\ \bibnamefont {Anlage}},
+  \bibinfo {author} {\bibfnamefont {P.~A.~J.}\ \bibnamefont {{de Groot}}}, \
+  and\ \bibinfo {author} {\bibfnamefont {N.~I.}\ \bibnamefont {Zheludev}},\
+  }\href {\doibase 10.1103/PhysRevLett.109.243904} {\bibfield  {journal}
+  {\bibinfo  {journal} {Phys. Rev. Lett.}\ }\textbf {\bibinfo {volume} {109}},\
+  \bibinfo {pages} {243904} (\bibinfo {year} {2012}{\natexlab{b}})}\BibitemShut
+  {NoStop}%
+\bibitem [{\citenamefont {Li}\ \emph {et~al.}(2016)\citenamefont {Li},
+  \citenamefont {Zhang}, \citenamefont {Hu}, \citenamefont {Zhou},
+  \citenamefont {Jiang}, \citenamefont {Jiang}, \citenamefont {Zhu},
+  \citenamefont {Jin}, \citenamefont {Kang}, \citenamefont {Xu}, \citenamefont
+  {Chen},\ and\ \citenamefont {Wu}}]{Li2016}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {C.}~\bibnamefont
+  {Li}}, \bibinfo {author} {\bibfnamefont {C.}~\bibnamefont {Zhang}}, \bibinfo
+  {author} {\bibfnamefont {G.}~\bibnamefont {Hu}}, \bibinfo {author}
+  {\bibfnamefont {G.}~\bibnamefont {Zhou}}, \bibinfo {author} {\bibfnamefont
+  {S.}~\bibnamefont {Jiang}}, \bibinfo {author} {\bibfnamefont
+  {C.}~\bibnamefont {Jiang}}, \bibinfo {author} {\bibfnamefont
+  {G.}~\bibnamefont {Zhu}}, \bibinfo {author} {\bibfnamefont {B.}~\bibnamefont
+  {Jin}}, \bibinfo {author} {\bibfnamefont {L.}~\bibnamefont {Kang}}, \bibinfo
+  {author} {\bibfnamefont {W.}~\bibnamefont {Xu}}, \bibinfo {author}
+  {\bibfnamefont {J.}~\bibnamefont {Chen}}, \ and\ \bibinfo {author}
+  {\bibfnamefont {P.}~\bibnamefont {Wu}},\ }\href@noop {} {\bibfield  {journal}
+  {\bibinfo  {journal} {Appl. Phys. Lett.}\ }\textbf {\bibinfo {volume}
+  {109}},\ \bibinfo {pages} {022601} (\bibinfo {year} {2016})}\BibitemShut
+  {NoStop}%
+\bibitem [{\citenamefont {Zhang}\ \emph {et~al.}(2015)\citenamefont {Zhang},
+  \citenamefont {Qiao}, \citenamefont {Liang}, \citenamefont {Wu},
+  \citenamefont {Yang}, \citenamefont {Feng}, \citenamefont {Sun},
+  \citenamefont {Zhou}, \citenamefont {Sun}, \citenamefont {Chen},
+  \citenamefont {Zou}, \citenamefont {Zhang}, \citenamefont {Hu}, \citenamefont
+  {Li}, \citenamefont {Chen}, \citenamefont {Li}, \citenamefont {Xu},
+  \citenamefont {Zhao},\ and\ \citenamefont {Liu}}]{Zhang2015}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {Y.}~\bibnamefont
+  {Zhang}}, \bibinfo {author} {\bibfnamefont {S.}~\bibnamefont {Qiao}},
+  \bibinfo {author} {\bibfnamefont {S.}~\bibnamefont {Liang}}, \bibinfo
+  {author} {\bibfnamefont {Z.}~\bibnamefont {Wu}}, \bibinfo {author}
+  {\bibfnamefont {Z.}~\bibnamefont {Yang}}, \bibinfo {author} {\bibfnamefont
+  {Z.}~\bibnamefont {Feng}}, \bibinfo {author} {\bibfnamefont {H.}~\bibnamefont
+  {Sun}}, \bibinfo {author} {\bibfnamefont {Y.}~\bibnamefont {Zhou}}, \bibinfo
+  {author} {\bibfnamefont {L.}~\bibnamefont {Sun}}, \bibinfo {author}
+  {\bibfnamefont {Z.}~\bibnamefont {Chen}}, \bibinfo {author} {\bibfnamefont
+  {X.}~\bibnamefont {Zou}}, \bibinfo {author} {\bibfnamefont {B.}~\bibnamefont
+  {Zhang}}, \bibinfo {author} {\bibfnamefont {J.}~\bibnamefont {Hu}}, \bibinfo
+  {author} {\bibfnamefont {S.}~\bibnamefont {Li}}, \bibinfo {author}
+  {\bibfnamefont {Q.}~\bibnamefont {Chen}}, \bibinfo {author} {\bibfnamefont
+  {L.}~\bibnamefont {Li}}, \bibinfo {author} {\bibfnamefont {G.}~\bibnamefont
+  {Xu}}, \bibinfo {author} {\bibfnamefont {Y.}~\bibnamefont {Zhao}}, \ and\
+  \bibinfo {author} {\bibfnamefont {S.}~\bibnamefont {Liu}},\ }\href {\doibase
+  10.1021/acs.nanolett.5b00869} {\bibfield  {journal} {\bibinfo  {journal}
+  {Nano Lett.}\ }\textbf {\bibinfo {volume} {15}},\ \bibinfo {pages} {3501}
+  (\bibinfo {year} {2015})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Lee}\ \emph {et~al.}(2012)\citenamefont {Lee},
+  \citenamefont {Choi}, \citenamefont {Kim}, \citenamefont {Lee}, \citenamefont
+  {Liu}, \citenamefont {Yin}, \citenamefont {Choi}, \citenamefont {Lee},
+  \citenamefont {Choi}, \citenamefont {Choi}, \citenamefont {Zhang},\ and\
+  \citenamefont {Min}}]{Lee2012}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {S.~H.}\ \bibnamefont
+  {Lee}}, \bibinfo {author} {\bibfnamefont {M.}~\bibnamefont {Choi}}, \bibinfo
+  {author} {\bibfnamefont {T.~T.}\ \bibnamefont {Kim}}, \bibinfo {author}
+  {\bibfnamefont {S.}~\bibnamefont {Lee}}, \bibinfo {author} {\bibfnamefont
+  {M.}~\bibnamefont {Liu}}, \bibinfo {author} {\bibfnamefont {X.}~\bibnamefont
+  {Yin}}, \bibinfo {author} {\bibfnamefont {H.~K.}\ \bibnamefont {Choi}},
+  \bibinfo {author} {\bibfnamefont {S.~S.}\ \bibnamefont {Lee}}, \bibinfo
+  {author} {\bibfnamefont {C.~G.}\ \bibnamefont {Choi}}, \bibinfo {author}
+  {\bibfnamefont {S.~Y.}\ \bibnamefont {Choi}}, \bibinfo {author}
+  {\bibfnamefont {X.}~\bibnamefont {Zhang}}, \ and\ \bibinfo {author}
+  {\bibfnamefont {B.}~\bibnamefont {Min}},\ }\href
+  {http://dx.doi.org/10.1038/nmat3433} {\bibfield  {journal} {\bibinfo
+  {journal} {Nat. Mater.}\ }\textbf {\bibinfo {volume} {11}},\ \bibinfo {pages}
+  {936} (\bibinfo {year} {2012})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Sizov}\ and\ \citenamefont
+  {Rogalski}(2010)}]{Sizov2010}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {F.}~\bibnamefont
+  {Sizov}}\ and\ \bibinfo {author} {\bibfnamefont {A.}~\bibnamefont
+  {Rogalski}},\ }\href {\doibase 10.1016/j.pquantelec.2010.06.002} {\bibfield
+  {journal} {\bibinfo  {journal} {Prog. Quantum Electron.}\ }\textbf {\bibinfo
+  {volume} {34}},\ \bibinfo {pages} {278} (\bibinfo {year} {2010})}\BibitemShut
+  {NoStop}%
+\bibitem [{\citenamefont {Semenov}, \citenamefont {Gol'tsman},\ and\
+  \citenamefont {Sobolewski}(2002)}]{Semenov2002}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {A.~D.}\ \bibnamefont
+  {Semenov}}, \bibinfo {author} {\bibfnamefont {G.~N.}\ \bibnamefont
+  {Gol'tsman}}, \ and\ \bibinfo {author} {\bibfnamefont {R.}~\bibnamefont
+  {Sobolewski}},\ }\href@noop {} {\bibfield  {journal} {\bibinfo  {journal}
+  {Supercond. Sci. Technol.}\ }\textbf {\bibinfo {volume} {15}},\ \bibinfo
+  {pages} {R1} (\bibinfo {year} {2002})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Wagenknecht}\ \emph {et~al.}(2006)\citenamefont
+  {Wagenknecht}, \citenamefont {Eitel}, \citenamefont {Nachtrab}, \citenamefont
+  {Philipp}, \citenamefont {Gross}, \citenamefont {Kleiner},\ and\
+  \citenamefont {Koelle}}]{Wagenknecht2006}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {M.}~\bibnamefont
+  {Wagenknecht}}, \bibinfo {author} {\bibfnamefont {H.}~\bibnamefont {Eitel}},
+  \bibinfo {author} {\bibfnamefont {T.}~\bibnamefont {Nachtrab}}, \bibinfo
+  {author} {\bibfnamefont {J.~B.}\ \bibnamefont {Philipp}}, \bibinfo {author}
+  {\bibfnamefont {R.}~\bibnamefont {Gross}}, \bibinfo {author} {\bibfnamefont
+  {R.}~\bibnamefont {Kleiner}}, \ and\ \bibinfo {author} {\bibfnamefont
+  {D.}~\bibnamefont {Koelle}},\ }\href {\doibase 10.1103/PhysRevLett.96.047203}
+  {\bibfield  {journal} {\bibinfo  {journal} {Phys. Rev. Lett.}\ }\textbf
+  {\bibinfo {volume} {96}},\ \bibinfo {pages} {047203} (\bibinfo {year}
+  {2006})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Fritzsche}\ \emph {et~al.}(2006)\citenamefont
+  {Fritzsche}, \citenamefont {Moshchalkov}, \citenamefont {Eitel},
+  \citenamefont {Koelle}, \citenamefont {Kleiner},\ and\ \citenamefont
+  {Szymczak}}]{Fritzsche2006}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {J.}~\bibnamefont
+  {Fritzsche}}, \bibinfo {author} {\bibfnamefont {V.~V.}\ \bibnamefont
+  {Moshchalkov}}, \bibinfo {author} {\bibfnamefont {H.}~\bibnamefont {Eitel}},
+  \bibinfo {author} {\bibfnamefont {D.}~\bibnamefont {Koelle}}, \bibinfo
+  {author} {\bibfnamefont {R.}~\bibnamefont {Kleiner}}, \ and\ \bibinfo
+  {author} {\bibfnamefont {R.}~\bibnamefont {Szymczak}},\ }\href {\doibase
+  10.1103/PhysRevLett.96.247003} {\bibfield  {journal} {\bibinfo  {journal}
+  {Phys. Rev. Lett.}\ }\textbf {\bibinfo {volume} {96}},\ \bibinfo {pages}
+  {247003} (\bibinfo {year} {2006})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Wang}\ \emph
+  {et~al.}(2009{\natexlab{a}})\citenamefont {Wang}, \citenamefont
+  {Gu{\'{e}}non}, \citenamefont {Yuan}, \citenamefont {Iishi}, \citenamefont
+  {Arisawa}, \citenamefont {Hatano}, \citenamefont {Yamashita}, \citenamefont
+  {Koelle},\ and\ \citenamefont {Kleiner}}]{Wang2009}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {H.~B.}\ \bibnamefont
+  {Wang}}, \bibinfo {author} {\bibfnamefont {S.}~\bibnamefont {Gu{\'{e}}non}},
+  \bibinfo {author} {\bibfnamefont {J.}~\bibnamefont {Yuan}}, \bibinfo {author}
+  {\bibfnamefont {A.}~\bibnamefont {Iishi}}, \bibinfo {author} {\bibfnamefont
+  {S.}~\bibnamefont {Arisawa}}, \bibinfo {author} {\bibfnamefont
+  {T.}~\bibnamefont {Hatano}}, \bibinfo {author} {\bibfnamefont
+  {T.}~\bibnamefont {Yamashita}}, \bibinfo {author} {\bibfnamefont
+  {D.}~\bibnamefont {Koelle}}, \ and\ \bibinfo {author} {\bibfnamefont
+  {R.}~\bibnamefont {Kleiner}},\ }\href {\doibase
+  10.1103/PhysRevLett.102.017006} {\bibfield  {journal} {\bibinfo  {journal}
+  {Phys. Rev. Lett.}\ }\textbf {\bibinfo {volume} {102}},\ \bibinfo {pages}
+  {017006} (\bibinfo {year} {2009}{\natexlab{a}})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Wang}\ \emph
+  {et~al.}(2009{\natexlab{b}})\citenamefont {Wang}, \citenamefont {Zhu},
+  \citenamefont {G{\"{u}}rlich}, \citenamefont {Ruoff}, \citenamefont {Kim},
+  \citenamefont {Hatano}, \citenamefont {Zhao}, \citenamefont {Zhao},
+  \citenamefont {Goldobin}, \citenamefont {Koelle},\ and\ \citenamefont
+  {Kleiner}}]{Wang2009a}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {H.~B.}\ \bibnamefont
+  {Wang}}, \bibinfo {author} {\bibfnamefont {B.~Y.}\ \bibnamefont {Zhu}},
+  \bibinfo {author} {\bibfnamefont {C.}~\bibnamefont {G{\"{u}}rlich}}, \bibinfo
+  {author} {\bibfnamefont {M.}~\bibnamefont {Ruoff}}, \bibinfo {author}
+  {\bibfnamefont {S.}~\bibnamefont {Kim}}, \bibinfo {author} {\bibfnamefont
+  {T.}~\bibnamefont {Hatano}}, \bibinfo {author} {\bibfnamefont {B.~R.}\
+  \bibnamefont {Zhao}}, \bibinfo {author} {\bibfnamefont {Z.~X.}\ \bibnamefont
+  {Zhao}}, \bibinfo {author} {\bibfnamefont {E.}~\bibnamefont {Goldobin}},
+  \bibinfo {author} {\bibfnamefont {D.}~\bibnamefont {Koelle}}, \ and\ \bibinfo
+  {author} {\bibfnamefont {R.}~\bibnamefont {Kleiner}},\ }\href {\doibase
+  10.1103/PhysRevB.80.224507} {\bibfield  {journal} {\bibinfo  {journal} {Phys.
+  Rev. B}\ }\textbf {\bibinfo {volume} {80}},\ \bibinfo {pages} {224507}
+  (\bibinfo {year} {2009}{\natexlab{b}})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Wang}\ \emph {et~al.}(2010)\citenamefont {Wang},
+  \citenamefont {Gu{\'{e}}non}, \citenamefont {Gross}, \citenamefont {Yuan},
+  \citenamefont {Jiang}, \citenamefont {Zhong}, \citenamefont {Gr\"{u}nzweig},
+  \citenamefont {Iishi}, \citenamefont {Wu}, \citenamefont {Hatano},
+  \citenamefont {Koelle},\ and\ \citenamefont {Kleiner}}]{Wang2010}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {H.~B.}\ \bibnamefont
+  {Wang}}, \bibinfo {author} {\bibfnamefont {S.}~\bibnamefont {Gu{\'{e}}non}},
+  \bibinfo {author} {\bibfnamefont {B.}~\bibnamefont {Gross}}, \bibinfo
+  {author} {\bibfnamefont {J.}~\bibnamefont {Yuan}}, \bibinfo {author}
+  {\bibfnamefont {Z.~G.}\ \bibnamefont {Jiang}}, \bibinfo {author}
+  {\bibfnamefont {Y.~Y.}\ \bibnamefont {Zhong}}, \bibinfo {author}
+  {\bibfnamefont {M.}~\bibnamefont {Gr\"{u}nzweig}}, \bibinfo {author}
+  {\bibfnamefont {A.}~\bibnamefont {Iishi}}, \bibinfo {author} {\bibfnamefont
+  {P.~H.}\ \bibnamefont {Wu}}, \bibinfo {author} {\bibfnamefont
+  {T.}~\bibnamefont {Hatano}}, \bibinfo {author} {\bibfnamefont
+  {D.}~\bibnamefont {Koelle}}, \ and\ \bibinfo {author} {\bibfnamefont
+  {R.}~\bibnamefont {Kleiner}},\ }\href {\doibase
+  10.1103/PhysRevLett.105.057002} {\bibfield  {journal} {\bibinfo  {journal}
+  {Phys. Rev. Lett.}\ }\textbf {\bibinfo {volume} {105}},\ \bibinfo {pages}
+  {057002} (\bibinfo {year} {2010})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Gu{\'{e}}non}\ \emph {et~al.}(2010)\citenamefont
+  {Gu{\'{e}}non}, \citenamefont {Gr{\"{u}}nzweig}, \citenamefont {Gross},
+  \citenamefont {Yuan}, \citenamefont {Jiang}, \citenamefont {Zhong},
+  \citenamefont {Li}, \citenamefont {Iishi}, \citenamefont {Wu}, \citenamefont
+  {Hatano}, \citenamefont {Mints}, \citenamefont {Goldobin}, \citenamefont
+  {Koelle}, \citenamefont {Wang},\ and\ \citenamefont {Kleiner}}]{Guenon2010}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {S.}~\bibnamefont
+  {Gu{\'{e}}non}}, \bibinfo {author} {\bibfnamefont {M.}~\bibnamefont
+  {Gr{\"{u}}nzweig}}, \bibinfo {author} {\bibfnamefont {B.}~\bibnamefont
+  {Gross}}, \bibinfo {author} {\bibfnamefont {J.}~\bibnamefont {Yuan}},
+  \bibinfo {author} {\bibfnamefont {Z.~G.}\ \bibnamefont {Jiang}}, \bibinfo
+  {author} {\bibfnamefont {Y.~Y.}\ \bibnamefont {Zhong}}, \bibinfo {author}
+  {\bibfnamefont {M.~Y.}\ \bibnamefont {Li}}, \bibinfo {author} {\bibfnamefont
+  {A.}~\bibnamefont {Iishi}}, \bibinfo {author} {\bibfnamefont {P.~H.}\
+  \bibnamefont {Wu}}, \bibinfo {author} {\bibfnamefont {T.}~\bibnamefont
+  {Hatano}}, \bibinfo {author} {\bibfnamefont {R.~G.}\ \bibnamefont {Mints}},
+  \bibinfo {author} {\bibfnamefont {E.}~\bibnamefont {Goldobin}}, \bibinfo
+  {author} {\bibfnamefont {D.}~\bibnamefont {Koelle}}, \bibinfo {author}
+  {\bibfnamefont {H.~B.}\ \bibnamefont {Wang}}, \ and\ \bibinfo {author}
+  {\bibfnamefont {R.}~\bibnamefont {Kleiner}},\ }\href {\doibase
+  10.1103/PhysRevB.82.214506} {\bibfield  {journal} {\bibinfo  {journal} {Phys.
+  Rev. B}\ }\textbf {\bibinfo {volume} {82}},\ \bibinfo {pages} {214506}
+  (\bibinfo {year} {2010})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Werner}\ \emph {et~al.}(2011)\citenamefont {Werner},
+  \citenamefont {Aladyshkin}, \citenamefont {Gu{\'{e}}non}, \citenamefont
+  {Fritzsche}, \citenamefont {Nefedov}, \citenamefont {Moshchalkov},
+  \citenamefont {Kleiner},\ and\ \citenamefont {Koelle}}]{Werner2011}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {R.}~\bibnamefont
+  {Werner}}, \bibinfo {author} {\bibfnamefont {A.~Y.}\ \bibnamefont
+  {Aladyshkin}}, \bibinfo {author} {\bibfnamefont {S.}~\bibnamefont
+  {Gu{\'{e}}non}}, \bibinfo {author} {\bibfnamefont {J.}~\bibnamefont
+  {Fritzsche}}, \bibinfo {author} {\bibfnamefont {I.~M.}\ \bibnamefont
+  {Nefedov}}, \bibinfo {author} {\bibfnamefont {V.~V.}\ \bibnamefont
+  {Moshchalkov}}, \bibinfo {author} {\bibfnamefont {R.}~\bibnamefont
+  {Kleiner}}, \ and\ \bibinfo {author} {\bibfnamefont {D.}~\bibnamefont
+  {Koelle}},\ }\href {\doibase 10.1103/PhysRevB.84.020505} {\bibfield
+  {journal} {\bibinfo  {journal} {Phys. Rev. B}\ }\textbf {\bibinfo {volume}
+  {84}},\ \bibinfo {pages} {020505} (\bibinfo {year} {2011})}\BibitemShut
+  {NoStop}%
+\bibitem [{\citenamefont {Gross}\ \emph {et~al.}(2012)\citenamefont {Gross},
+  \citenamefont {Gu{\'{e}}non}, \citenamefont {Yuan}, \citenamefont {Li},
+  \citenamefont {Li}, \citenamefont {Ishii}, \citenamefont {Mints},
+  \citenamefont {Hatano}, \citenamefont {Wu}, \citenamefont {Koelle},
+  \citenamefont {Wang},\ and\ \citenamefont {Kleiner}}]{Gross2012}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {B.}~\bibnamefont
+  {Gross}}, \bibinfo {author} {\bibfnamefont {S.}~\bibnamefont {Gu{\'{e}}non}},
+  \bibinfo {author} {\bibfnamefont {J.}~\bibnamefont {Yuan}}, \bibinfo {author}
+  {\bibfnamefont {M.~Y.}\ \bibnamefont {Li}}, \bibinfo {author} {\bibfnamefont
+  {J.}~\bibnamefont {Li}}, \bibinfo {author} {\bibfnamefont {A.}~\bibnamefont
+  {Ishii}}, \bibinfo {author} {\bibfnamefont {R.~G.}\ \bibnamefont {Mints}},
+  \bibinfo {author} {\bibfnamefont {T.}~\bibnamefont {Hatano}}, \bibinfo
+  {author} {\bibfnamefont {P.~H.}\ \bibnamefont {Wu}}, \bibinfo {author}
+  {\bibfnamefont {D.}~\bibnamefont {Koelle}}, \bibinfo {author} {\bibfnamefont
+  {H.~B.}\ \bibnamefont {Wang}}, \ and\ \bibinfo {author} {\bibfnamefont
+  {R.}~\bibnamefont {Kleiner}},\ }\href {\doibase 10.1103/PhysRevB.86.094524}
+  {\bibfield  {journal} {\bibinfo  {journal} {Phys. Rev. B}\ }\textbf {\bibinfo
+  {volume} {86}},\ \bibinfo {pages} {094524} (\bibinfo {year}
+  {2012})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Werner}\ \emph {et~al.}(2013)\citenamefont {Werner},
+  \citenamefont {Aladyshkin}, \citenamefont {Nefedov}, \citenamefont {Putilov},
+  \citenamefont {Kemmler}, \citenamefont {Bothner}, \citenamefont {Loerincz},
+  \citenamefont {Ilin}, \citenamefont {Siegel}, \citenamefont {Kleiner},\ and\
+  \citenamefont {Koelle}}]{Werner2013}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {R.}~\bibnamefont
+  {Werner}}, \bibinfo {author} {\bibfnamefont {A.~Y.}\ \bibnamefont
+  {Aladyshkin}}, \bibinfo {author} {\bibfnamefont {I.~M.}\ \bibnamefont
+  {Nefedov}}, \bibinfo {author} {\bibfnamefont {A.~V.}\ \bibnamefont
+  {Putilov}}, \bibinfo {author} {\bibfnamefont {M.}~\bibnamefont {Kemmler}},
+  \bibinfo {author} {\bibfnamefont {D.}~\bibnamefont {Bothner}}, \bibinfo
+  {author} {\bibfnamefont {A.}~\bibnamefont {Loerincz}}, \bibinfo {author}
+  {\bibfnamefont {K.}~\bibnamefont {Ilin}}, \bibinfo {author} {\bibfnamefont
+  {M.}~\bibnamefont {Siegel}}, \bibinfo {author} {\bibfnamefont
+  {R.}~\bibnamefont {Kleiner}}, \ and\ \bibinfo {author} {\bibfnamefont
+  {D.}~\bibnamefont {Koelle}},\ }\href@noop {} {\bibfield  {journal} {\bibinfo
+  {journal} {Supercond. Sci. Technol.}\ }\textbf {\bibinfo {volume} {26}},\
+  \bibinfo {pages} {095011} (\bibinfo {year} {2013})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Sivakov}\ \emph {et~al.}(2000)\citenamefont
+  {Sivakov}, \citenamefont {Lukashenko}, \citenamefont {Abraimov},
+  \citenamefont {M\"{u}ller}, \citenamefont {Ustinov},\ and\ \citenamefont
+  {Leghissa}}]{Sivakov2000}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {A.~G.}\ \bibnamefont
+  {Sivakov}}, \bibinfo {author} {\bibfnamefont {A.~V.}\ \bibnamefont
+  {Lukashenko}}, \bibinfo {author} {\bibfnamefont {D.}~\bibnamefont
+  {Abraimov}}, \bibinfo {author} {\bibfnamefont {P.}~\bibnamefont
+  {M\"{u}ller}}, \bibinfo {author} {\bibfnamefont {A.~V.}\ \bibnamefont
+  {Ustinov}}, \ and\ \bibinfo {author} {\bibfnamefont {M.}~\bibnamefont
+  {Leghissa}},\ }\href {\doibase 10.1063/1.126420} {\bibfield  {journal}
+  {\bibinfo  {journal} {Appl. Phys. Lett.}\ }\textbf {\bibinfo {volume} {76}},\
+  \bibinfo {pages} {2597} (\bibinfo {year} {2000})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Sivakov}\ \emph {et~al.}(1996)\citenamefont
+  {Sivakov}, \citenamefont {Zhuravel'}, \citenamefont {Turutanov},\ and\
+  \citenamefont {Dmitrenko}}]{Sivakov1996}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {A.~G.}\ \bibnamefont
+  {Sivakov}}, \bibinfo {author} {\bibfnamefont {A.~P.}\ \bibnamefont
+  {Zhuravel'}}, \bibinfo {author} {\bibfnamefont {O.~G.}\ \bibnamefont
+  {Turutanov}}, \ and\ \bibinfo {author} {\bibfnamefont {I.~M.}\ \bibnamefont
+  {Dmitrenko}},\ }\href {\doibase 10.1016/S0169-4332(96)00445-X} {\bibfield
+  {journal} {\bibinfo  {journal} {Appl. Surf. Sci.}\ }\textbf {\bibinfo
+  {volume} {106}},\ \bibinfo {pages} {390} (\bibinfo {year}
+  {1996})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Li}\ \emph {et~al.}(2017)\citenamefont {Li},
+  \citenamefont {Wu}, \citenamefont {Jiang}, \citenamefont {Su}, \citenamefont
+  {Zhang}, \citenamefont {Jiang}, \citenamefont {Zhou}, \citenamefont {Jin},
+  \citenamefont {Kang}, \citenamefont {Xu}, \citenamefont {Chen},\ and\
+  \citenamefont {Wu}}]{Li2017}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {C.}~\bibnamefont
+  {Li}}, \bibinfo {author} {\bibfnamefont {J.}~\bibnamefont {Wu}}, \bibinfo
+  {author} {\bibfnamefont {S.}~\bibnamefont {Jiang}}, \bibinfo {author}
+  {\bibfnamefont {R.}~\bibnamefont {Su}}, \bibinfo {author} {\bibfnamefont
+  {C.}~\bibnamefont {Zhang}}, \bibinfo {author} {\bibfnamefont
+  {C.}~\bibnamefont {Jiang}}, \bibinfo {author} {\bibfnamefont
+  {G.}~\bibnamefont {Zhou}}, \bibinfo {author} {\bibfnamefont {B.}~\bibnamefont
+  {Jin}}, \bibinfo {author} {\bibfnamefont {L.}~\bibnamefont {Kang}}, \bibinfo
+  {author} {\bibfnamefont {W.}~\bibnamefont {Xu}}, \bibinfo {author}
+  {\bibfnamefont {J.}~\bibnamefont {Chen}}, \ and\ \bibinfo {author}
+  {\bibfnamefont {P.}~\bibnamefont {Wu}},\ }\href@noop {} {\bibfield  {journal}
+  {\bibinfo  {journal} {Appl. Phys. Lett.}\ }\textbf {\bibinfo {volume}
+  {111}},\ \bibinfo {pages} {092601} (\bibinfo {year} {2017})}\BibitemShut
+  {NoStop}%
+\bibitem [{\citenamefont {Zhang}\ \emph {et~al.}(2016)\citenamefont {Zhang},
+  \citenamefont {Li}, \citenamefont {Zhang}, \citenamefont {Zhang},
+  \citenamefont {Gu}, \citenamefont {Jin}, \citenamefont {Han},\ and\
+  \citenamefont {Zhang}}]{Zhang2016}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {H.}~\bibnamefont
+  {Zhang}}, \bibinfo {author} {\bibfnamefont {C.}~\bibnamefont {Li}}, \bibinfo
+  {author} {\bibfnamefont {C.}~\bibnamefont {Zhang}}, \bibinfo {author}
+  {\bibfnamefont {X.}~\bibnamefont {Zhang}}, \bibinfo {author} {\bibfnamefont
+  {J.}~\bibnamefont {Gu}}, \bibinfo {author} {\bibfnamefont {B.}~\bibnamefont
+  {Jin}}, \bibinfo {author} {\bibfnamefont {J.}~\bibnamefont {Han}}, \ and\
+  \bibinfo {author} {\bibfnamefont {W.}~\bibnamefont {Zhang}},\ }\href
+  {\doibase 10.1364/OE.24.027415} {\bibfield  {journal} {\bibinfo  {journal}
+  {Opt. Express}\ }\textbf {\bibinfo {volume} {24}},\ \bibinfo {pages} {27415}
+  (\bibinfo {year} {2016})}\BibitemShut {NoStop}%
+\end{thebibliography}%
+
+%\bibliography{Paper}
+\end{document}
