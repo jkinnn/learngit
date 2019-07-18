@@ -1,0 +1,503 @@
+\iffalse
+
+Before sending further, pass this check
+list:\leq\leq\leq\leq
+  [ ] find and resolve all "???"
+  [ ] Spell-check
+  [ ] order of using/defining abbreviations
+  [ ] citation order (use RefTest)
+  [ ] figure order & reference order
+  [ ] Check LaTeX  output files (*.log) for warnings
+  [ ] Check BibTeX output (screen) for warnings
+  [ ] update PACS
+  [ ] decide on color figures
+  [ ] Re-read paper in the morning
+
+After completing this list, if you made
+at least one correction, re-do this
+check-list from the beginning, until no
+corrections will be done.
+
+\fi
+
+%Decide here the style of the document
+\documentclass[aps,twocolumn,prb,showpacs,preprintnumbers,superscriptaddress,amsmath,amssymb,longbibliography]{revtex4-1}
+%\documentclass[twocolumn,prb,showpacs,superscriptaddress]{revtex4}
+%\documentclass[twocolumn,prl,showpacs,superscriptaddress]{revtex4}
+% \usepackage{authblk}
+% = two column
+
+%\documentclass[aps,preprint,showpacs,preprintnumbers,amsmath,amssymb]{revtex4}
+% = single column
+
+% Some other (several out of many) possibilities
+%\documentclass[preprint,aps]{revtex4}
+%\documentclass[preprint,aps,draft]{revtex4}
+
+%%% Normales LaTeX oder pdfLaTeX? %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% ==> Das neue if-Kommando "\ifpdf" wird an einigen wenigen
+%%% ==> Stellen ben\"{o}tigt, um die Kompatibilit\"{a}t zwischen
+%%% ==> LaTeX und pdfLaTeX herzustellen.
+%\newif\ifpdf
+%\ifx\pdfoutput\undefined
+%    \pdffalse               %normales LaTeX wird ausgef\"{u}hrt
+%\else
+%    \pdfoutput=1
+%    \pdftrue                %pdfLaTeX wird ausgef\"{u}hrt
+%\fi
+%%% Packages f\"{u}r Grafiken & Abbildungen %%%%%%%%%%%%%%%%%%%%%%
+%\ifpdf %%Einbindung von Grafiken mittels \includegraphics{datei}
+%    \usepackage[pdftex]{graphicx} %%Grafiken in pdfLaTeX
+%\else
+    \usepackage[dvips]{graphicx} %%Grafiken und normales LaTeX
+%\fi
+%%\usepackage[hang]{subfigure} %%Mehrere Teilabbildungen in einer Abbildung
+%%\usepackage{pst-all} %%PSTricks - nicht verwendbar mit pdfLaTeX
+
+
+%\usepackage{graphicx, dblfloatfix}
+\usepackage[english]{babel}
+\usepackage{blindtext}
+\usepackage{dcolumn}% Align table columns on decimal point
+\usepackage{bm}% bold math
+\usepackage{ulem}
+\usepackage[dvips]{color} % textcolor
+
+%\nofiles
+
+%%%%%%%% shortcuts %%%%%%%%%%%%%%%%%%%%%%%%%%5
+%by Edward
+\newcommand{\ie}{{\it i.e. }}
+\newcommand{\eg}{{\it e.g. }}
+%\newcommand{\cf}{{\it cf. }}
+\newcommand{\vs}{{\it vs. }}
+\newcommand{\etc}{{\it etc. }}
+\newcommand{\etal}{{\it et~al. }}
+%by Stefan
+\newcommand{\bl}{\ensuremath{\beta_L}}
+\newcommand{\bc}{\ensuremath{\beta_C}}
+\newcommand{\G}{\ensuremath{\Gamma}}
+\newcommand{\iac}{\ensuremath{i_{ac}}}
+\newcommand{\Iac}{\ensuremath{I_{ac}}}
+\newcommand{\omdach}{\ensuremath{\omega/\omega_0}}
+\newcommand{\vbar}{\ensuremath{\bar{v}}}
+\newcommand{\deltadot}{\ensuremath{\dot{\delta}}}
+\newcommand{\xdot}{\ensuremath{\dot{x}}}
+\newcommand{\vphi}{\ensuremath{V(\Phi_a)}}
+%by Dieter
+\newcommand{\gapprox}{{\scriptscriptstyle\stackrel{>}{\sim}}}
+\newcommand{\lapprox}{{\scriptscriptstyle\stackrel{<}{\sim}}}
+\newcommand{\dg}{\ensuremath{^\circ}}
+%\newcommand{\ybco}{\ensuremath{\mathrm{YBa_2Cu_3O_{7-\delta}}} }
+\newcommand{\VIac}{\ensuremath{{<V>}(I_{ac})}}
+\newcommand{\Vavg}{\ensuremath{<V>}}
+\newcommand{\VPhi}{\ensuremath{V_\Phi}}
+%by Albert
+\newcommand{\bibdir}{bib/}      %directory for bib-files
+\newcommand{\actdir}{eps-fig/}  %directory for eps-files\newcommand{\fig}[1]{Fig.~\ref{#1}}
+\newcommand{\tab}[1]{Table~\ref{#1}}
+\newcommand{\co}[2]{\ifcase #1 \or #2 \fi}
+
+%by Stefan G.
+\newcommand{\bscco}{Bi$_{2}$Sr$_{2}$CaCu$_{2}$O$_{8}$\,}
+\newcommand{\ybco}{YBa$_{2}$Cu$_{3}$O$_{7}$\,}
+\newcommand{\micron}{$\,\mu$m}
+\newcommand{\celsius}{\,$^\circ$C}
+\newcommand{\angstrom}{\,$\mathring{A}$}
+
+%by Wang
+\newcommand\degrees[1]{\ensuremath{#1^\circ}}
+
+%by Dieter
+\newcommand{\blue}{\textcolor{blue}}
+
+
+%change here to get in order!
+%\bibliographystyle{alpha}
+%\bibliographystyle{apsprl}
+
+\newif\ifnote
+
+%%%%%%% Notizen Einschalten: %
+%\notetrue                   %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%\ifnote{\sf\textcolor{blue}{\sout{...}\;}}\fi
+
+
+\begin{document}
+
+\title{Resonant cavity modes in Bi$_2$Sr$_2$CaCu$_2$O$_{8+x}$ intrinsic Josephson junction stacks}
+
+\author{Huili Zhang}
+%\thanks{Y. H. and H.C. S. contributed equally to this work.}
+\affiliation{Research Institute of Superconductor Electronics, Nanjing University, Nanjing 210023, China}
+
+\author{Wei Chen}
+%\thanks{Y. H. and H.C. S. contributed equally to this work.}
+\affiliation{Research Institute of Superconductor Electronics, Nanjing University, Nanjing 210023, China}
+
+\author{Raphael Wieland}
+\affiliation{Physikalisches Institut and Center for Quantum Science in LISA$^+$, Universit\"{a}t T\"{u}bingen, D-72076 T\"{u}bingen, Germany}
+
+\author{Olcay Kizilaslan}
+\affiliation{Physikalisches Institut and Center for Quantum Science in LISA$^+$, Universit\"{a}t T\"{u}bingen, D-72076 T\"{u}bingen, Germany}
+\affiliation{Inonu University, Department of Biomedical Engineering, Faculty of Engineering 44280, Malatya, Turkey}
+
+\author{Shigeyuki Ishida}
+\affiliation{Electronics and Photonics Research Institute, Advanced Industrial Science and Technology, Tsukuba 3058568, Japan}
+
+\author{Chao Han}
+%\thanks{Y. H. and H.C. S. contributed equally to this work.}
+\affiliation{Research Institute of Superconductor Electronics, Nanjing University, Nanjing 210023, China}
+
+\author{Wanghao Tian}
+%\thanks{Y. H. and H.C. S. contributed equally to this work.}
+\affiliation{Research Institute of Superconductor Electronics, Nanjing University, Nanjing 210023, China}
+
+\author{Zuyu Xu}
+%\thanks{Y. H. and H.C. S. contributed equally to this work.}
+\affiliation{Research Institute of Superconductor Electronics, Nanjing University, Nanjing 210023, China}
+
+\author{Zaidong Qi}
+\affiliation{Research Institute of Superconductor Electronics, Nanjing University, Nanjing 210023, China}
+
+\author{Tong Qing}
+\affiliation{Research Institute of Superconductor Electronics, Nanjing University, Nanjing 210023, China}
+
+\author{Yangyang Lv}
+\affiliation{Research Institute of Superconductor Electronics, Nanjing University, Nanjing 210023, China}
+
+\author{Xianjing Zhou}
+\affiliation{Research Institute of Superconductor Electronics, Nanjing University, Nanjing 210023, China}
+
+\author{Nickolay Kinev}
+\affiliation{Kotel'nikov Institute of Radio Engineering and Electronics, Moscow 125009, Russia}
+
+\author{Oleg Kiselev}
+\affiliation{Kotel'nikov Institute of Radio Engineering and Electronics, Moscow 125009, Russia}
+
+\author{Eric Dorsch}
+\affiliation{Physikalisches Institut and Center for Quantum Science in LISA$^+$, Universit\"{a}t T\"{u}bingen, D-72076 T\"{u}bingen, Germany}
+
+\author{JMarc Ziegele}
+\affiliation{Physikalisches Institut and Center for Quantum Science in LISA$^+$, Universit\"{a}t T\"{u}bingen, D-72076 T\"{u}bingen, Germany}
+
+\author{Jun Li}
+\affiliation{Research Institute of Superconductor Electronics, Nanjing University, Nanjing 210023, China}
+
+\author{Dieter Koelle}
+\affiliation{Physikalisches Institut and Center for Quantum Science in LISA$^+$, Universit\"{a}t T\"{u}bingen, D-72076 T\"{u}bingen, Germany}
+
+\author{Hiroshi Eisaki}
+\affiliation{Electronics and Photonics Research Institute, Advanced Industrial Science and Technology, Tsukuba 3058568, Japan}
+
+\author{Yoshiyuki Yoshida}
+\affiliation{Electronics and Photonics Research Institute, Advanced Industrial Science and Technology, Tsukuba 3058568, Japan}
+
+\author{Valery P. Koshelets}
+\affiliation{Kotel'nikov Institute of Radio Engineering and Electronics, Moscow 125009, Russia}
+
+\author{Reinhold Kleiner}
+\thanks{Emails: hbwang@nju.edu.cn, kleiner@uni-tuebingen.de}
+\affiliation{Physikalisches Institut and Center for Quantum Science in LISA$^+$, Universit\"{a}t T\"{u}bingen, D-72076 T\"{u}bingen, Germany}
+
+\author{Huabing Wang}
+\thanks{Emails: hbwang@nju.edu.cn, kleiner@uni-tuebingen.de}
+\affiliation{Research Institute of Superconductor Electronics, Nanjing University, Nanjing 210023, China}
+
+\author{Peiheng Wu}
+\affiliation{Research Institute of Superconductor Electronics, Nanjing University, Nanjing 210023, China}
+
+\date{\today}% It is always \today, today,
+             %  but any date may be explicitly specified
+
+\begin{abstract}
+
+%Reinhold, here is the main idea of this manuscript. We have observed different frequency tunability behavior between different bias regimes, namely, high bias and low bias. At high bias regime, the frequencies can be tuned continuously by varying temperature and bias current, and junction numbers are rather constant; On the contrary, the emission frequencies tend to be discrete with different resonance modes at low bias regime (Between neighboring modes, there is certain intensity of emission but not so intense), and the junction numbers adjust themselves to tune the frequencies around those resonance frequencies, which are constant over a very broad temperature range.
+
+%The synchronization mechanisms probably are really different. We all know the difference was caused by the hot-spot. But how does it affect the synchronization? Is it possible to do simulation or find a mechanical model which is easy for people to understand.
+
+%This experiment was done by a PhD student, and the manuscript was far from being ready. Many typos and many mistakes. I send you this draft at its "very initial state" to ask for your comments, and to draw your attention to this result.
+
+
+
+
+%Recently, it has been shown that large stacks of intrinsic Josephson junctions in Bi$_{2}$Sr$_{2}$CaCu$_{2}$O$_{8+\delta}$ emit synchronous THz radiation. the synchronization presumably triggered by a cavity resonance.
+
+%In an array of Josephson junctions, individual elements can be synchronized to electromagnetic wave resonances of the cavity formed by junction geometries. Emission frequencies, numbers of active junctions, total voltage of the array regulate themselves by obeying the resonance mode of the cavity and the well known Josephson relation. In Bi$_{2}$Sr$_{2}$CaCu$_{2}$O$_{8+\delta}$ intrinsic Josephson junctions, when we decrease bias current to switch the resonance modes from high frequency to low frequency, the numbers of the active junctions (at voltage state) can increase, meaning that the resonant electromagnetic waves can switch junctions from their zero voltage states to finite states.  
+We report on a detailed investigation of THz emission properties related to resonant cavity modes. We discuss data for an underdopend and an optimally doped BSCCO single crystal having the same geometry. At high bias, in the presence of a hot spot the emission frequency is continuously tunable by changing the bias current and the bath temperature. By contrast, at low bias the emission frequencies $f_{\rm e}$ are remarkably discrete and temperature independent for both stacks. The values of $f_{\rm e}$ point to the formation of $(0,m)$ cavity modes with $m$ = 3 to 6. The total voltage $V$ across the stack varies much stronger than $f_{\rm e}$, and there seems to be an excess voltage indicating groups of junctions that are unlocked. For the case of the underdoped stack we perform intensive numerical simulations based on coupled sine Gordon equations combined with heat diffusion equations. Many overall features can be reproduced well and point to an unexpected large value of the in-plane resistivity.  However, unlike in experiment, in simulations the different resonant modes strongly overlap. The reason for this discrepancy is presently unclear. 
+
+
+
+\end{abstract}
+
+\pacs{74.50.+r, 74.72.-h, 85.25.Cp}
+% PACS, the Physics and Astronomy
+% Classification Scheme.
+\maketitle
+
+\section{Introduction}
+\label{sec:intro}
+Terahertz (THz) emitters consisting of stacks of intrinsic Josephson junctions (IJJs) made of the high-transition-temperature (high-$T_{\rm c}$) cuprate Bi$_{2}$Sr$_{2}$CaCu$_{2}$O$_{8+\delta}$ (BSCCO) have attracted great interest in recent years, in terms of both experiment\cite{Ozyuzer07,Kadowaki08,Wang09a,Minami09,Gray09,Guenon10,Kurter10,Wang10a,Tsujimoto10,Koseoglu11,Benseman11,Yamaki11,
+Yuan12,Li12,Kakeya12,Kashiwagi12,Tsujimoto12,Tsujimoto12a,Turkoglu12,An13,Benseman13,Benseman13a,Sekimoto13,Minami14,Watanabe14,Ji14,
+Tsujimoto14,Kashiwagi14,Kashiwagi14b,Kashiwagi15a,Kashiwagi15b,Kitamura14,Watanabe15,Zhou15a,Zhou15b,Hao15,Kashiwagi15c,Benseman15,Nakade16,Tsujimoto16,Sun17,Kizilaslan17, Tsujimoto17,Huang17, Elarabi17, Borodianskyi17, Elarabi18, Kashiwagi18, Uchida18} and theory\cite{Bulaevskii07,Koshelev08b,Lin08,Hu08,Krasnov09,Klemm09,Tachiki09,Pedersen09,Hu09,Koyama09,Krasnov10,Koshelev10,Kadowaki10,Yurgens11, Krasnov11,Tachiki11,Klemm11,Lin12,Averkov12,Asai12,Grib12,Gross12,Gross13,Liu13,Asai14,Grib14,Rudau15, Rudau16, Asai17,Cerkoney17, Klemm17, Klemm17b, Sun18}. 
+For recent reviews, see Refs. \onlinecite{Welp13,Kakeya16,Kashiwagi17}.
+BSCCO is a layered superconductor with alternating superconducting and insulating sheets. A single crystal thus forms a natural stack of intrinsic Josephson junctions (IJJs), with $\sim$670 IJJs per $\mu$m of crystal thickness\cite{Kleiner92}. 
+Due to the Josephson effect, in the resistive state the supercurrents across each IJJ oscillate with a frequency $f_{\rm J} = V_{\rm J}/\Phi_0$, where $V_{\rm J}$ is the voltage across the junction and $\Phi_0$ is the flux quantum, $\Phi_0^{-1}$ = 483.6\,GHz/mV. Assuming that the voltage drop across all $N$ IJJs in the stack is the same, the Josephson relation can be written as  $f_{\rm J} = V/N\Phi_0$, where $V$ is the total voltage across the stack. 
+Coherent off-chip terahertz emission was first demonstrated for 1-$\mu$m-thick BSCCO stacks, with an extrapolated output power up to 0.5\,$\mu$W and emission frequencies $f_{\rm e}$ between 0.5 and 0.85\,THz\cite{Ozyuzer07}. The emission frequency was found to be inversely proportional to the width of the stack, leading to the conclusion that resonant cavity modes oscillating along the width of the stack play an important role in synchronization. A variety of cavity resonances have indeed been found and analyzed \cite{Kadowaki08,Lin08,Minami09,Wang09a,Kadowaki10,Wang10a,Guenon10,Koshelev10,Yamaki11,Klemm11,Tsujimoto10,Liu13,Watanabe14,Tsujimoto16,Cerkoney17,Klemm17,Klemm17b,Kashiwagi18}. For a rectangular stack of length $L$ and width $W$ the cavity modes can exhibit $m$ half waves along the length and $p$ half waves along the width, and the resonance frequencies of these modes are given by $f_{\rm c}$ = $c_1\sqrt{(p/2W)^2+(m/2L)^2}$, with the in-phase mode velocity $c_1$. At low temperatures and very thick stacks $c_1 \approx$ 7$\times$10$^7$\,m/s. The expression for $f_{\rm c}$ implicitly assumes that the cavity modes are well defined (i.e., has a high quality factor). The expression also assumes that the whole stack is superconducting and at a roughly constant temperature. 
+
+There are in fact two emission regimes for IJJ stacks which can roughly be distinguished from the shape of the current-voltage characteristics (IVCs). Since the out-of-plane resistivity of BSCCO decreases with increasing temperature the IVCs exhibit a positive differential resistance at low currents but start to back-bend at larger currents and the differential resistance becomes negative. At moderate input power (``low-bias regime''), Joule heating is small and the temperature distribution in the stack is almost homogeneous and close to the bath temperature $T_{\rm b}$.
+By contrast, in the ``high-bias regime'' the current and temperature distributions in the stack become strongly nonuniform and a hot spot -- \ie a region with a temperature above $T_{\rm c}$ -- forms\cite{Wang09a,Wang10a,Guenon10,Yurgens11,Gross12,Kakeya12,Benseman13,Minami14,Zhou15a,Watanabe15}. The hot spot grows in size with increasing current and can coexist with regions that are still superconducting and produce terahertz radiation. In the presence of the hot spot one can still detect standing wave patterns \cite{Wang09a, Wang10a, Guenon10}. However, the size of the cold part of the stack varies as a function of bias current and bath temperature, and the geometric boundary conditions are no longer purely fixed by the geometry of the stack. The emission frequency becomes tunable \cite{Zhou15a,Zhou15b, Watanabe15}. Interestingly, the linewidth of radiation is much lower in the presence of the hot spot \cite{Li12}. However, THz emission in the high-bias regime seems to be fragile. Many samples do not emit in this region, and the reason for this is unclear.
+
+There are, thus, many unresolved issues about THz emission and standing-wave formation, asking for a detailed study over a wide range of bias conditions and possibly a close comparison to numerical simulations. We perform such a study using two intrinsic Josephson junction stacks of the same geometry and a junction number of about 700. The stacks are fabricated, respectively, from an underdopend and an optimally doped BSCCO single crystal. 
+Both stacks emit in the low-bias regime. At high bias, in the presence of a hot spot, only the optimally doped stack emits THz radiation.
+For this stack, at high bias the emission frequency is continuously tunable by changing the bias current and the bath temperature, and all IJJs seem to be synchronized. By contrast, at low bias the emission frequencies $f_{\rm e}$ are remarkably discrete and similar for both stacks, pointing to the excitation of $(0,m)$ cavity modes with $m$ = 3 to 6. Surprizingly the total voltage $V$ across the stack varies much stronger than $f_{\rm e}$, and there seems to be an excess voltage indicating groups of junctions that are unlocked. For the case of the underdoped stack we also perform intensive numerical simulations based on coupled sine Gordon equations combined with heat diffusion equations \cite{Rudau15, Rudau16,Sun18}. Many features, like the shape of the current voltage characteristics, the absence of high-bias emission, the temperature and voltage regions where emission occurs at low bias can be reproduced and point to an unexpected large value of the in-plane resistivity.  However, in our simulations the different resonant modes strongly overlap for realistic model parameters. The pronounced discreteness of the experimentally observed emission frequencies remain unclear.
+
+
+
+%Therefore, this paper has contended that resonant modes utilizing the stack itself as a cavity and oscillating along the width of the stack play an important role in synchronization. This synchronization is enhanced by the geometrical cavity resonance condition, $f$  = $f_{\rm c}$($m$, $p$) of the transverse-magnetic (TM) mode\cite{Ozyuzer07,Kadowaki08,Kadowaki10,Klemm09}, where $m$ and $p$ are integers for the particular geometry of the thin mesa. For a thin rectangular mesa of width $w$ and length $l$, $f_{\rm c}$ = $c_0/2n\sqrt{(m/w)^2+(p/l)^2}$ , where $n$ is the index of refraction for BSCCO and $c_{0}$ is the speed of light in vacuum. Nevertheless, by varying the bias $V$, the output $f_{\rm J}$ changes until it locks onto a standing wave mode of that cavity, resulting in coherent emission from the stack of IJJs at $f_{\rm J}$ = $f_{\rm c}$($m$, $p$) and enhancing the output power at $f_{\rm J}$ value. A variety of cavity resonances models have indeed been found in subsequent experiments\cite{Kadowaki08,Wang09a,Minami09,Guenon10,Wang10a,Tsujimoto10,Kadowaki10,Rudau16,R2018Terahertz}. In most cases, long rectangular mesas are applied. Furthermore, the TM(1, 0) mode with the formation of the standing wave along the width of the mesa at $f_{\rm(1, 0)}$=$c_0/2nw$ has been observed\cite{Ozyuzer07,Klemm09,Tsujimoto12a,Kashiwagi2017The}.
+
+%There are two emission regimes in the IJJ stacks, the low-bias regime and the high-bias regime, operating at the bath temperature $T_{\rm b}$ well below $T_{\rm c}$. At moderate input power (`low-bias regime'), the heating effect is puny and the temperature distribution in the mesa could be regarded as homogeneous and approximate to $T_{\rm b}$. Thus, the cavity resonance frequency is essentially fixed by the geometry of the mesa and may meet by the frequency of the Josephson oscillations, set by the voltage $V/N$ across each junction. By contrast, in the `high-bias regime' the current and temperature distribution in the stack become strongly nonuniform and a hot spot, \ie a region with a temperature above $T_{\rm c}$, forms\cite{Wang09a,Guenon10,Kakeya12,Benseman13,Gross12}. The hot spot grows in size with increasing current. The hot spot coexists with regions that are still superconducting and produce terahertz radiation. 
+%The hot spot affects the characteristics of the terahertz radiation, demonstrated by the strongly different values of linewidth $\Delta f_{\rm e}$, respectively, under the high-bias and low-bias conditions\cite{Li12}. Besides, low temperature scanning laser microscopy (LTSLM) measurements of rectangular mesas during emission confirmed the presence of hot spots, which were accompanied by what appeared to be standing waves along the length of the mesa\cite{Wang09a, Wang10a, Guenon10, Gross12}. Since the TM(1, 0) mode involves a standing wave across the width of the mesa, this seems difficult to understand because the emission frequencies would be expected to be different. However, the angular distribution from the intrinsic Josephson junctions in rectangular mesas could not distinguish whether the standing waves were across the width of the mesa or along the length of it\cite{Klemm2011Cavity}. Recently, a new report presented $3D$ simulations of the thermal and electromagnetic properties of a mesa and proposed that resonant modes could be excited in the stack both in the presence and the absence of hot spot, exhibiting standing waves along the length ((0,$n$) modes) or the width (($m$, 0) mode) of the stack\cite{Rudau16}.
+
+
+%In this paper, we present a study of different mesas, which is fabricated by underdoped and optimally doped BSCCO crystal, with the same geometry under both high-bias and low-bias regimes. In order to provide additional information relevanted to the terahertz emission properties with different bias conditions, this paper explores the terahertz emission properties with high/low bias current, and examines possibilities various cavity modes with different resonant modes can be excited using an identical stack of IJJs by changing the bias condition.
+
+\section{Samples and experimental techniques}
+\label{sec:samples}
+
+%Figure Sketch %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[tb]
+\includegraphics[width=0.8\columnwidth,clip]{figure1}
+\caption{(color online). (a) Resistance of the BSCCO stacks sample 1 (red) and sample 2 (blue) vs. bath temperature $T_{\rm b}$. Inset shows a sketch of the stacks. (b) IVCs of samples 1 (red line) and Sample 2 (blue line), as measured at $T_{\rm b}$ = 28\,K. Arrows indicate current sweep direction. (c) Emission power vs. bias current for samples 1 (red line) and 2 (blue line). }
+\label{fig:Sketch}
+\end{figure}
+%Figure Sketch end %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+We perform our measurements on stand-alone BSCCO stacks embedded between gold electrodes, so-called gold-BSCCO-gold (GBG) structures. The inset in Fig. \ref{fig:Sketch} shows a sketch of the geometry. The preparation of the sample is described in detail in Ref. \onlinecite{Ji14}. In brief, a BSCCO single crystal is glued onto a silicon substrate with polyimide. A 100\,nm thick gold film is deposited on the crystal immediately after cleaving. As the third step, a $400\times 200$\,$\mu$m$^2$ wide rectangular mesa is fabricated using photolithography. The thickness of the mesa is about 1.2\,$\mu$m. The sample is then glued to a MgO substrate using polyimide. The base crystal is cleaved away by removing the silicon substrate, leaving the mesa standing alone surrounded by Polyimide. The fresh surface is immediately covered with a 100\,nm thick gold layer. Photoresist is patterned in a rectangular, $300\times50$\,$\mu$m$^2$ wide area over the cleaved mesa using photolithography, and then the whole sample is etched down to the bottom gold layer by ion milling, resulting in a nominally (within about $\pm 10\%$ accuracy) 1.2\,$\mu$m thick stand-alone stack with lateral dimensions of $300\times50$\,$\mu$m$^2$ contacted by the top and bottom gold layers. The nominal thickness of the stack corresponds to about 800 IJJs.
+In this paper data of two samples are presented. Sample 1 is fabricated from an Ar-annealed underdoped BSCCO single crystal with $T_{\rm c} \approx$ 76\,K. Sample 2 is fabricated from an as-grown BSCCO single crystal near optimal doping with $T_{\rm c} \approx$ 89\,K. 
+The samples are mounted separately onto hemispherical silicon lenses 6\,mm in diameter and placed into a Strirling cooler which can cool down to 27.8\,K from room temperature. The THz radiation is focused by the lens, then transmited outward through a homemade Fourier transform infrared spectrometer and is finally detected by a Golay cell. The current-voltage characteristics (IVCs), the THz emission power $P_{\rm e}$, and frequency-resolved spectra determining the emission frequency $f_{\rm e}$ can be measured simultaneously. The power-detection and frequency measurements are similar to our previous studies\cite{Guenon10}.
+
+Fig. \ref{fig:Sketch} shows the dependence of the $c$-axis resistance of the two samples on bath temperature $T_{\rm b}$. 
+%The underdoped sample 1 has a superconducting transition temperatures $T_{\rm c}$ of about 76\,K, the nearly optimally doped sample 2 has a $T_{\rm c}$ of about 89\,K. 
+Below $T_{\rm c}$ nearly temperature independent contact resistances of 13.5\,$\Omega$ and 23.5\,$\Omega$ are observed for samples 1 and 2, respectively. The contact resistances are subtracted from the measurements discussed below.
+
+\section{Results}
+\label{sec:results}
+
+%Figure Images %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure*}[tb]
+\includegraphics[width=1.7\columnwidth,clip]{figure2}
+\caption{(color online). For sample 2: (a) IVC at $T_{\rm b}$=55\,K on a large current and voltage scale (inset) and on zoomed scales (main graph) near the voltage maximum. (b) THz emission power $P_{\rm e}$ vs. bias current. Graphs (c) shows 18 THe emission spectra  at bias points indicated by circles in (a) and (b). Numbers in the graphs indicate the emission frequencies (peaks in the emission spectra) $f_{\rm e}$ and the voltage $V$ across the stack. Note the enlarged power scale for spectra (10) to (13). Arrows in the inset in (a) indicate the direction of current sweep.
+}
+\label{fig:IVC_new}
+\end{figure*}
+%Figure Images end %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+To introduce our transport and emission measurements Fig. \ref{fig:IVC_new} shows data for sample 2, taken at $T_{\rm b}$ = 55\,K. The inset in (a) shows the IVC, measured for currents between 0 and 40\,mA. For this and other recordings of IVCs addressed below we ramp up the current from zero up to some maximum value (about 40\,mA in Fig. \ref{fig:IVC_new} (a)) and then decrease the current back to zero. Upon increasing current, at $I$ = 33\,mA the stack switches from the zero voltage state to an intermediate state where some groups of junctions are resistive and finally, at $I$ = 35\,mA, it switches to a state where all junctions in the stack are resistive. When the current is decreased all IJJs remain in their resistive state until, for currents below 6.5\,mA, some junctions and finally all of them return to the zero voltage state. The THz emission power $P_{\rm e}$ is bolometrically detected simultaneously to the IVC recording and plotted in Fig. \ref{fig:IVC_new} (b) vs.  bias current. Upon decreasing current the sample starts to emit at currents below 22\,mA and displays a shallow emission maximum near $I$ = 17\,mA and $V$ = 0.88\,V, i.e. near the maximum voltage in the IVC. There is a more strong emission maximum at a current of about 4.4\,mA. We next take THz emission spectra at several bias points. 18 of them, recorded at the bias points indicated by circles in Figs. \ref{fig:IVC_new} (a) and (b) are displayed  in Fig. \ref{fig:IVC_new} (c). For the spectra (1) to (9) there is only a single emission peak with power $P_{\rm e}$ at frequency $f_{\rm e}$ which slightly shifts to lower frequency values when increasing the bias current. The linewidth of the peaks of roughly 7.5\,GHz is given by the frequency resolution of our spectrometer. For each spectrum $f_{\rm e}$ and the voltage $V$ are indicated in the graphs. From the relation $f_{\rm e} = V/N\Phi_0$ we induce a junction number of $N$ = 705 $\pm$ 5 in this regime. For spectra (10) to (13), which are taken near the minimum in $P_{\rm e}$ vs. $I$ in Fig. \ref{fig:IVC_new} (b) we find two emission peaks located near 0.565\,THz and 0.515\,THz. This implies that either the stack either switches between the two oscillation frequencies in time or, more likely, it has grouped the IJJs into (at least) two regions along the $z$ axis where the junctions oscillate at different frequencies at the same time and thus develop different dc voltages.  
+When decreasing the current further the lower-in-frequency peak survives and shifts to lower values of $f_{\rm e}$, cf. spectra (14) to (18). For this 
+low-frequency peak we would infer values of $N$ between 785 and 770, the value decreasing with decreasing current. 
+We thus see that, at least for the data taken at $T_{\rm b}$ = 55\,K, the emission frequency varies in an almost discrete way, with an unclear junction number inferred from the total voltage $V$. 
+%This motivates our detailed study of emission frequencies adressed in the following.
+%
+%Figure Images %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[tb]
+\includegraphics[width=0.8\columnwidth,clip]{figure3}
+\caption{(color online). For Sample 1: (a) IVCs at different temperatures $T_{\rm b}$ (28\,K, 30\,K, 35\,K and from 40\,K to 70\,K in steps of 2.5\,K). The color code indicates the emission power $P_{\rm e}$. (b) Emission frequency $f_{\rm e}$ vs. voltage $V$ across the stack for all bath temperatures. The solid lines corresponds to $V$ = $Nf_{\rm e}\Phi_0$ with $N$ = 700. The black and red asterisks represent the selected bias points to measure $f_{\rm e}$ for $T_{\rm b}$  = 40\,K and $T_{\rm b}$  = 45\,K, respectively. Dashed arrows in (a) indicate the direction of the current sweep. 
+}
+\label{fig:IVE1}
+\end{figure}
+%Figure IVE1 end %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%Figure Images %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[tb]
+\includegraphics[width=0.8\columnwidth,clip]{figure4}
+\caption{(color online). For Sample 2: (a) IVCs at different temperatures $T_{\rm b}$ from 28\,K to 70\,K in steps of 2\,K. The color code indicates the emission power $P_{\rm e}$. (b) Emission frequency $f_{\rm e}$ vs. voltage $V$ across the stack for all bath temperatures. The solid lines corresponds to $V$ = $Nf_{\rm e}\Phi_0$ with $N$ = 710. Dashed arrows in (a) indicate the direction of the current sweep. 
+}
+\label{fig:IVE2}
+\end{figure}
+%Figure IVE2 end %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+To address this in more detail we next show in Figs. \ref{fig:IVE1}(a) and \ref{fig:IVE2}(a) families of IVCs taken at bath temperatures between 28\,K and 70\,K.
+Fig. \ref{fig:IVE1}(a)  is for sample 1 and Fig. \ref{fig:IVE2}(a) sample 2. 
+Each IVC is recorded as described for Fig. \ref{fig:IVC_new}. 
+%
+For sample 1, THz emission, displayed by the color scale in Fig. \ref{fig:IVE1} (a), is only detectable in the low-bias regime where the differential resistance in the IVC is positive. The maximum voltage where emission occurs is about 1.1\,V and the current range where emission is seen is between 2 and 10\,mA. The emitting region seems to be weakly modulated in roughly vertical stripes, a feature which has been seen in the past \cite{Kitamura14,Rudau15,Tsujimoto16} and which is attributed to the formation of different standing waves being excited in the stack. 
+
+Fig. \ref{fig:IVE1} (b) shows emission frequencies $f_{\rm e}$, inferred from a large number of spectra, vs. the total voltage $V$ across the stack. The scatter of the data points along the frequency axis is much less than the scatter along the voltage axis and one clearly observes four discrete emission frequencies near 0.36, 0.47, 0.58 and 0.71\,THz. These values indicate that (0,3), (0,4), (0,5) and (0,6) resonances have formed in the stack under the various bias conditions. For the mode velocity $c_1 = 2Lf_e/m$, $m$ being the mode index and $L = 600$\,$\mu$m being the length of the stack, we find a value of 7$\times$10$^7$ m/s which is consistent with previous measurements \cite{Kakeya16,Kashiwagi12}.
+The solid line in Fig. \ref{fig:IVE1} (b) is given by the function $f_{\rm e} = V/N\Phi_0$, with $N = 700$ being (approximately) the total number of IJJs in the stack. 
+While a large number of data points is located on or at least near this line, some of the data points are clearly located at higher voltages, and some are located at lower voltages. Data points left of the solid line can be explained naturally by assuming that some of the junctions in the stack have switched back to the zero voltage states. 
+%For explaining the points right of the solid line one could assume that the real junction number is much higher than 700; e. g. for $N$ = 780 most data points would be located right of the solid line. However, in that scenario one would have to explain why for the majority of spectra many junctions would have switched to their zero voltage state. 
+In simulations, cf. Sec. \ref{sec:simulations}, we find that a number of junctions being located at the top or the bottom of the stack are not locked to the resonance that has formed, but have developed a higher dc voltage. In these simulations the total voltage across the stack can exceed by more than 10\,$\%$ the voltage expected for all junctions being locked. This seems to be a natural explanation for the spread in $V$. We further note that between the regions where different resonances occur the IVCs exhibit jumps and sometimes changes of slope. If all junctions of the stack were locked to a given resonance one would expect discrete steps in the IVC with low resistance. If, however, at the same time the number of locked junction varies the shape of such steps could become very complicated, like it is observed for sample 1. 
+For clarity, in Fig. \ref{fig:IVE1} we have marked some of the subsequent spectra taken at bath temperatures of, respectively, 40\,K and 45\,K with black and red asterisks. One observes a tendency that, when the emission frequency has jumped toward a lower value when the decreasing the bias current, the voltage is larger than expected for the resonance, while before the jump it is close to the value expected for all junctions being locked. This goes in-line with the data discussed in Fig. \ref{fig:IVC_new} and indicates that transitions to lower-index resonances occur when the point of strongest phase-lock is exceeded.  
+
+Fig. \ref{fig:IVE2} (a) shows families of IVCs for sample 2. In spite of the very different doping state of this sample compared to sample 1 the overall shape of the IVCs is very similar to the ones shown in Fig. \ref{fig:IVE1} (a), indicating that the (subgap) resistance and the thermal parameters of both samples are not too different. In contrast to sample 1, sample 2 also emits in the high-bias regime, i.e., in the presence of a hot spot, although with low emission power. At low bias the appearance of stripe-like modulations of the emitted THz power is less evident than for sample 1. Still in a plot of  $f_{\rm e}$ vs. $V$, cf. Fig. \ref{fig:IVE2} (b), one observes discrete values for the emission frequencies in the low bias regime (red points) which are very close to the frequency values observed for sample 1. By contrast, in the high-bias regime the emission frequencies seem to vary continuously. This is also a feature which has been observed many times before; it can be attributed to the fact that the hot spot (and thus also the cold region) can have variable sizes and positions. The solid line in Fig. \ref{fig:IVE2} (b) is given by the function $f_{\rm e} = V/N\Phi_0$, with $N = 710$. The high-bias data are located very close to this line whereas, like for sample  1, in the low-bias regime some data points are significantly shifted towards the right of the line.
+Further note that the emission frequencies observed in Fig. \ref{fig:IVC_new} would correspond to a transition between the (0,5) and the (0,4) mode.  
+
+%To emphasize the discreteness of the emission frequencies in the low-bias regime we show for sample 2 in Fig. \textbf{(Figure 2 from ppt file detailed results}) a section of the IVC at $T_{\rm b}$=55\,K) near the back-bending (a) together with 11 Fourier spectra of radiation (b). One observes an almost discrete transition between two different emission peaks that can be associated with the transition between the (0,4) and (0,5) resonance. There is a very narrow region, zoomed in in  Fig. \textbf{(Figure 2 from ppt file detailed results}) (c), where both emission frequencies can be observed simultaneously. This implies that either the stack switches between the two resonant modes in time or, more likely, it has grouped the IJJs into two regions (along the $z$ axis where one group is locked to the (0,4) mode and the other to the (0,5) mode. Note that in consequence the voltage drop across the IJJs of the two parts must be different, i. e. there is a gradient in voltage along $z$.    
+ 
+
+\begin{figure}[b]
+\includegraphics[width=0.8\columnwidth,clip]{figure5}
+\caption{(color online). For sample 1: (a) emission frequency $f_{\rm e}$ vs. bath temperature $T_{\rm b}$ over a large temperature range up to 70\,K. The color code indicates the emission power $P_{\rm e}$. (b) Emission power $P_{\rm e}$ vs. emission frequency $f_{\rm e}$ at various $T_{\rm b}$ values indicated by the color code.
+ }
+\label{fig:eval1}
+\end{figure}
+%Figure eval1 end %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%Figure eval2 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[b]
+\includegraphics[width=0.8\columnwidth,clip]{figure6}
+\caption{(color online). For sample 2: (a) emission frequency $f_{\rm e}$ vs. bath temperature $T_{\rm b}$ over a large temperature range up to 70\,K. The color code indicates the emission power $P_{\rm e}$. (b) and (c) show emission power $P_{\rm e}$ at high bias and low bias, respectively, vs. emission frequency $f_{\rm e}$ at various $T_{\rm b}$ values indicated by the color code.
+}
+\label{fig:eval2}
+\end{figure}
+%Figure eval2 end %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+To further evaluate our data we show for sample 1 in Fig. \ref{fig:eval1} (a) emission frequencies vs. bath temperature and in Fig. \ref{fig:eval1} (b) the emission power vs. emission frequencies. Color scales in (a) and (b) denote emission power and bath temperature, respectively. In both plots the discretenes of the values of $f_{\rm e}$ is evident and, in addition, from Fig. \ref{fig:eval1} (a) it is seen from the temperature-independence of the resonant frequencies, that the mode velocity $c_1$ is basically temperature independent. This result is surprizing, because from coupled sine-Gordon equations one expects $c_1$ to decrease with temperature and even approach zero for $T_{\rm b} \rightarrow T_{\rm c}$. The reason is the decrease in Cooper pair density with increasing temperature, resulting in an increase and for $T_{\rm b} \rightarrow T_{\rm c}$ the divergence of the kinetic inductance associated with supercurrent flow.
+We will address this further in Sec. \ref{sec:simulations}.
+
+For sample 2, Fig. \ref{fig:eval2} shows (a) $f_{\rm e}$ vs. $T_{\rm b}$ and (b),(c) $P_{\rm e}$ vs. $f_{\rm e}$. For this sample emission was detectable both in the presence of a hot sot (square symbols) and at low bias (circles). Both plots confirm that in the high-bias regime the emission frequency varies continuously, while at low bias the emission frequencies are discrete and, as far as detectable, independent of $T_{\rm b}$. 
+
+%Figure 2(a) shows IVCs for different temperatures $T_{\rm b}$ ranging from the 28\,K to 70\,K with a step-size of 2.5\,K. The color code represents different terahertz emission power $P_{\rm e}$. With increasing $T_{\rm b}$, the retrapping voltage is gradually decreasing, and the entire emission regime shifts to lower voltage, $i.e.$, lower emission frequencies. The emission region covers a current range from about 2 to 10\,mA and, correspondingly, a voltage range from 0.4 to 1.1\,V, as shown in Fig. 2(a). The high level emission power is observed around 0.52, 0.70, 0.84 and 1.03\,V, corresponding to 0.36, 0.47, 0.58 and 0.71\,THz at all operating temperature regime, $cf.$ Fig. 2(b). Each emission peak corresponds to the excitation of the different cavity mode. In Fig. 2(b), we plot $f_{\rm e}$ versus the voltage across the stack for all operating temperatures. Note that all the bias points for measure emission frequency are taken above the half height of the radiation peak. Based on the Josephson relation $f_{\rm e}=2eV/Nh$, we plot two fit lines (in Fig. 2(b)), $N$ = 700 ($N_{\rm min}$) and 780 ($N_{\rm max}$), which determine a range for the number of the active junctions that have contributed to the emission. It is remarkable here to note that the emission frequencies $f_{\rm e}$ tend to be discrete. According to the cavity condition for the rectangular mesa, the expected cavity resonance frequencies of 0.36, 0.47, 0.58, and 0.71\,THz correspond with (0, 3), (0, 4), (0, 5), (0, 6), oscillating along the length of the stack. In Fig. 2, the red and black pentagrams represent the different bias points to measure the frequency $f_{\rm e}$ at $T_{\rm b}$ = 40\,K and 45\,K, respectively. The pentagrams show that, at the same frequency, the number of active junctions decreases as the bias voltage decreases. This reason is that, lowering the bias $I$ in a cavity resonance state, some of the junctions in the stack switch back to the superconducting state to tune the frequencies around the resonance frequency. However, when the emission regime shifts to a lower mode as the $I$ decreases, the number of active junctions suddenly increases. As an example, shown by the red arrow in Fig. 2(b), the number of active junctions changes from $\sim$725 to $\sim$780. This seems to indicate that some junctions in the stack return to voltage state again because of cavity excitation.
+% the mesa enters a cavity resonance state where the radiation intensity increases.
+
+% exhibit awider V (or f) range of strong deviations from the linear ac Josephson relation than do the data shown in Fig. 5(c) obtained from sample no. 1.
+
+%For Sample 1 the terahertz emission power in the high bias regime is poor. Thus, for comparison, Fig. 3 shows data for Sample 2 which is fabricated from an optimally doped BSCCO crystal with $T_{\rm c} \approx$ 89\,K. Also Fig. 3(a) shows IVCs for different temperatures $T_{\rm b}$. The bath temperatures $T_{\rm b}$ range from 28\,K to 70\,K with a step-size of 2\,K. The color code stands for different terahertz emission power $P_{\rm e}$. In lower temperature regime, Sample 2 exhibits a broader emission stripes on the high-bias regime (above 15\,mA). With increasing $T_{\rm b}$, the emission at high-bias regime is gradually decreasing, and the emission at low-bias regime is increasing. Above 50\,K, Sample 2 emission was observed only at the low-bias regime. Similar to sample 1, the high-level emission power of Sample 2 under the low-bias regime is observed around 0.52, 0.70, 0.84 and 1.03\,V. Fig. 3(b) shows the relationship between the observed radiation frequencies and the applied bias voltages. The dashed and solid lines represent $N_{min}$ = 710 and $N_{max}$ = 780, respectively. According to the high bias regime and low bias regime, the data points distribute into two parts. At low-bias regime, the emission frequencies tend to be discrete. And the discrete frequency points in agreement with (0, 3), (0, 4), (0, 5) and (0, 6), oscillating along the length of the stack. The result of Sample 2 is consistent with with Sample 1, due to the same geometry. The number of the active junctions varies from 710 to 780 to tune the frequencies around those resonance frequencies. At high bias regime, the frequencies tend to be continuous, as indicated by blue points in Fig. 3(b). And the number of the active junctions is rather constant ($N\sim$710) over a very broad temperature range. This leads to a better ability to phase lock IJJs in the presence of a hot spot\cite{Li12}. However, the number of active junctions at high bias regime is less than at low bias regime. Firstly, we found that the contact resistance is decreasing as increasing $T_{\rm b}$. Secondly, the contact resistance was derived for all temperatures from IVCs (at low voltage). In the high-bias regime, the contact resistance which has been subtracted for Sample 2 may be more than the actual value due to the existence of hot-spot. Actually, in the experiment, we found the number of the active junctions in the high-bias regime was less than that of in the low-bias regime.
+
+%To understand the overall behavior between resonances frequency and emission power, we further measured the $f_{\rm e}$ and $P_{\rm e}$ at all operating temperatures for the two samples. Figs. 4 and 5 show more detailed data of Sample 1 and Sample 2, respectively. In Fig. 4(a), $f_{\rm e}$ is plotted versus $T_{\rm b}$ under the temperature ranging from 28\,K to 70\,K, using $P_{\rm e}$ as color code. Under the operating temperature, the emission frequency gradually decreases as $T_{\rm b}$ increases. The maximum frequency is 0.91\,THz when $T_{\rm b}$ equals to 28\,K, whereas the lowest frequency is 0.38\,THz when $T_{\rm b}$ equals to 70\,K. The overall behaviors of the temperature dependent are showed in Fig. 4(a), which is consistent with the pervious researches \cite{Wang10a}. However, the frequency is not continuously tuned. The emission frequency $f_{\rm e}$ of Sample 1 is mainly distributed in 5 frequency points: $\sim$0.36, $\sim$0.47, $\sim$0.58, $\sim$0.71 and $\sim$0.87\,THz. Since the radiation of this sample appears the low-bias regime which is less affected by heat, the emission frequency is essentially fixed by the mesa geometry. When attributing the emission frequency $f_{\rm e}$ to resonance mode one finds that (0, 6), (0, 5), (0, 4), (0, 3) modes, oscillating along the length of the stack, are compatible with the observed value of $f_{\rm e}$. In Fig. 4(b), we plotted the spectral peak intensities detected versus $f_{\rm e}$ for Sample 1 at various color-coded $T_{\rm b}$ values. In this figure, the emission is observed over a frequency range from 0.37\,THz to 0.9\,THz, with three prominent peaks in $P_{\rm e}$ at $\sim$0.58, $\sim$0.48, and $\sim$0.37\,THz, and two smaller near 0.87 and 0.71\,THz. This means that those particular cavity modes appear to enhance the emission power.
+%it is suggests that these peaks need to be associated with cavity resonances.
+
+%Similarly, we used the same approach to test Sample 2. The frequency under both the high-bias regime and low-bias regime with respect to $T_{\rm b}$ is summarized in Fig. 5(a). Sample 2 exhibits the same tendency, namely, the emission frequencies gradually increases as $T_{\rm b}$ declines. Under the high-bias regime, the emission frequency $f_{\rm e}$ could be continuously tunable range from 0.7 to 1\,THz. Under the low-bias regime, the observed emission was fixed at several constant frequencies, such as $\sim$0.58, $\sim$0.48 and $\sim$0.37\,THz. This result is consistent with the observed values in Sample 1. As we can clearly see in Fig. 5(b) and (c), the observed spectral intensity depends strongly upon $f_{\rm e}$. Under the high-bias regime, the emission spectrum ranges from 0.7 to 1\,THz. This widely continuous spectrum implies that the frequency is broadly tunable due to hot-spot. Under the high-bias regime, Sample 2 also shows three distinct peaks at $\sim$0.58, $\sim$0.48 and $\sim$0.37\,THz, with (0, 5), (0, 4) and (0, 3) cavity resonance modes correspondingly. Sample 1 saw the similar behavior. These results clearly indicate and reconfirm that the cavity-enhancement mechanism for the terahertz radiation is working properly.
+
+\section{Comparison to simulations}
+\label{sec:simulations}
+Our simulations are based on coupled sine-Gordon equations combined with heat diffusion equations, as described in detail in Refs. \onlinecite{Sun18,Rudau16, Rudau15}. 
+In the model the electrical and thermal model parameters depend on temperature, and thus, for an inhomogeneous temperature distribution, on coordinates $x$, $y$ and $z$. Their spatial variation, as well as $T(x,y,z)$, are found by self-consistently by solving the thermal equations (requiring Joule heat dissipation as an input from the electric circuit) and the electrical equations (requiring the temperature distribution in the stack, as determined from the thermal circuit).
+%
+In the present paper we consider a stand-alone IJJ stack, with $T_{\rm c}$ = 75\,K, consisting of $N$ = 700 IJJs. These parameters are not too far from those of sample 1. The rectangular stack has a length $L_{\rm s}$ = 300\,$\mu$m along $x$ and a width $W_{\rm s}$ = 50\,$\mu$m along $y$. It is covered by two gold layers and cooled from the bottom side. The bottom of the substrate is kept at bath temperature $T_{\rm b}$. We assume that between the substrate and the BSCCO stack there is a layer with poor thermal conductivity $\kappa_{\rm g}$ and thickness $d_{\rm g}$ which we use as a fit parameter to roughly match the $T_{\rm b}$ = 28\,K IVC to the experimental curve. For the simulations presented we take $d_{\rm g}$ = 30\,$\mu$m and $\kappa_{\rm g}$ = 1\,W/mK.
+We further assume for the thermal description that the IJJ stack plus the contacting Au layer have a temperature $T_{\rm m}(x,y)$ which is constant along $z$ but can vary along $x$ and $y$. For the BSCCO thermal conductivity we use the same values and temperature dependences as in Ref. \onlinecite{Sun18}. 
+In $z$ direction the substrate (thickness 100\,$\mu$m, thermal conductivity 1000\,W/mK) is discretized by two segments, and each poorly conducting sheet by 9 segments.
+%
+For this geometry we solve the heat diffusion equation $c{\rm d}T/{\rm d}t=\nabla(\kappa\nabla T)+q_s$, 
+with the specific heat capacity $c$, the (anisotropic and layer dependent) thermal conductivity $\kappa$ and the power density $q_s$  for heat generation in the stack.
+
+For the electric circuit we group the $N$ IJJs in the stack to $M = 50$ segments, each containing $G = N/M = 16$ IJJs, assumed to have identical properties. $G$ explicitly appears in the electrodynamic equations and leads to well-behaved scaling, i. e. in particular in-phase dynamic solutions appear almost independent of the choice of $M$, provided that $M$ is sufficiently large. 
+ 
+In the model the electric current density $j_{\rm{ext}}$ is injected into the Au layer which we assume to have a low enough resistance to freely distribute the current before it enters the IJJ stack in $z$ direction with a density $j_{z,\rm{Au}}$ proportional to the local BSCCO conductance $\sigma_{c} (x,y) = \rho_c^{-1}(x,y)$.
+The full expression is $j_{z,\rm{Au}} = \left\langle j_{\rm{ext}}\right\rangle \sigma_{c}(x,y) / \left\langle\sigma_{c}\right\rangle$, the brackets denoting spatial averaging.
+The same current leaves the lower Au electrode.
+We solve sine-Gordon-like equations for the Josephson phase differences $\gamma_{\rm l}(x,y)$ in the $l$th segment of the IJJ stack: 
+%
+\begin{equation}
+\label{eq:sigo_segment}
+\begin{split}
+Gsd_{\rm s}\nabla(\frac{\nabla\dot{\gamma}_l}{\rho_{ab}}) + G\lambda_{\rm k}^2 \nabla(n_s\nabla\gamma_l) = \\
+(2+\frac{G^2\lambda_{\rm k}^2n_s}{\lambda_{\rm c}^2})j_{z,l}-j_{z,l+1}-j_{z,l-1}.
+\end{split}
+\end{equation}
+%  
+Here, $l$ = $1..M$, $\nabla = (\partial/\partial x, \partial/\partial y)$, $d_{s}$ =  0.5\,nm is the thickness of the superconducting layers and 
+$\lambda_{\rm k} = [\Phi_0 d_{\rm s}/(2\pi\mu_0j_{\rm c0}\lambda_{ab0}^2)]^{1/2}$, with the in-plane London penetration depth $\lambda_{ab0}$  and the magnetic permeability $\mu_0$. $\lambda_{\rm c} = [\Phi_0/(2\pi\mu_0j_{\rm c0}s)]^{1/2}$  is the out-of-plane penetration depth. Time is normalized to $\Phi_0/2\pi j_{\rm c0}\rho_{c0}s$, resistivities to $\rho_{c0}$ and current densities to $j_{\rm c0}$. 
+
+
+The $z$-axis currents consist of Josephson currents with critical current density $j_{{\rm c}}(x,y)$, (ohmic) quasiparticle currents with resistivity $\rho_{{\rm c}}(x,y)$ and displacement currents with (temperature independent) dielectric constant $\varepsilon$.
+One obtains:
+%
+\begin{equation}
+\label{eq:RCSJ}
+j_{{z},l} = \frac{\beta_{\rm c0}}{G} \ddot{\gamma}_l + \frac{\dot{\gamma}_l}{\rho_{{c},l}} + j_{\rm c} \sin(\gamma_l) +j^{\rm N}_{{z},l},
+\end{equation}
+%
+with $\beta_{\rm c0} = 2\pi j_{\rm c0}\rho_{c0}^2\varepsilon\varepsilon_0s/\Phi_0 $; $s$ = 1.5\,nm is the interlayer period, $\varepsilon_0$ is the vacuum permittivity and the $j^{\rm N}_{{z},l}$ are the out-of-plane noise current densities.  
+%The normalized spectral density of $j^{\rm N}_{{z},m}$ is $4\Gamma_0 (T_{\rm m}/T_0)L_{\rm s}/($d$x\rho_{c}$).  
+The in-plane current densities are calculated as in Refs. \onlinecite{Sun18, Rudau16}.
+For the electrical parameters we use the 4.2\,K values $\rho_{c0} $ = 1550\,$\Omega$cm, $j_{\rm c0} = 250$\,A/cm$^2$, $\lambda_{\rm ab0}$ = 260\,nm and $\varepsilon = 9$, yielding $\lambda_c$ =  264\,$\mu$m, $\lambda_k$ = 0.88\,$\mu$m and $\beta_{\rm c0}$ = 2.18 $\times$ 10$^5$. 
+For the temperature dependence of $j_{\rm c}$ we use a parabolic profile, $j_{\rm c} \propto 1-(T/T_{\rm c})^2$; for the temperature dependence of $\rho_{\rm c}$ see Ref. \onlinecite{Rudau15}.
+
+The choice of $\rho_{ab}(T)$ requires some discussion. In general, $\rho_{ab}(T)$ (like also other model parameters) is a function of both temperature, frequency and the doping state of the BSCCO crystal. Since we cannot implement this fully in our model we focus on the relevant frequency range between 0.5 and 1\,THz and we approximate $\rho_{ab}(T)$ by $\sigma_1^{-1}$, where $\sigma_1(T)$ is the real part of the in-plane microwave conductivity. $\sigma_1(T)$ exhibits a shallow maximum below $T_{c}$, and consequently $\rho_{ab}(T)$ has a minimum at this temperature. We found through many simulations that our results depend critically on this minimum value. For the present simulations we use the results of Ref. \onlinecite{Nunner05} for $\sigma_1(T)$, where in frequency range between 0.5 and 1\,THz $\sigma_1(T)$ is predicted to be peaked near $T$ = 50\,K. We approximate this $\sigma_1(T)$ by a parabolic temperature dependence continuing continuously to temperatures above $T_{\rm c}$. For the minimum $\rho_{ab, min}$ at T = 50\,K we show results fot 20 and 30\,$\mu \Omega$cm below. 
+ 
+We also study two types of boundary conditions with respect to $j_z$. In our standard simulations we approximate the current densities leaving the stack by the (time-independent) applied current density, as described above. For this conditions all high-frequency components generated by the Josephson effect are confined in the stack. Below, this is referred to as boundary condition 0 (BC = 0). To allow ac currents to flow into the Au layer we now also consider a configuration where we explicitly include the Au layers, modelled as ideal conductors. These layers are separated from the actual stack by a ``dead layer'' of thickness $d_d$ mimicking the contact resistance of the sample. In the simulation discussed below $d_d$ is set to 30\,nm and for the contact resistance $\rho_c (T)$ of the BSCCO stack is used. The second boundary condition is referred to as boundary condition 1 (BC = 1).
+
+In an initial sequence of simulations we discretized the stack using 50 grid points along $x$ and 10 grid points along $y$ and calculated IVCs for different bath temperatures. In these simulations we alway found $(0,m)$ cavity modes. We thus restricted ourself to a 2D configuration, using only 1 one grid point along $y$ for further calculations. 
+
+A 5th order Runge-Kutta scheme is used to evolve the above equations in time.
+For a given set of input parameters, in a first initializing step we solve the heat diffusion equation considering dissipation by out-of-plane quasiparticle currents only, in order to achieve stationary distributions for the temperature and $j_{\rm{ext}}$. Then, in a second initializing step, heat-diffusion and sine-Gordon equations are solved simultaneously over typically 5000 Josephson oscillations. In most simulations we start with constant phases $\gamma_l$ = 0 and evolve the dynamics over time. In some cases we trigger solutions, by using cosine profiles for $\gamma_l$, alternating between adjacent layers. This triggers fluxon-antifluxon rows. Further, for all simulations are initialized in a state where all junctions are resistive, by using proper initial conditions for the $\dot{\gamma}_{l}$. 
+After the initialization steps various quantities, partially averaged over spatial coordinates, are tracked as a function of time to produce time averages or to make Fourier transforms. Im particular we calculate spatially resolved time averages of the power $\left\langle q(x)\right\rangle$ dissipated by in-plane currents \cite{Rudau15}, as well as Fourier transforms of the integrated power $q_{||}$ dissipated by in-plane currents oscillating at the Josephson frequency. $\left\langle q(x)\right\rangle$ has turned out to be an effective quantity to identify resonant modes while $q_{||}$ serves as surrogate for the emitted radiation for which have no direct numerical access in our simulations. 
+
+Before turning to the actual results we note that in our simulations resonant emelctromagnetic modes are accompanied by the formation of alsmost static columns of Josephson fluxons and antifluxons\cite{Rudau15,Rudau16}, as predicted in Refs. \onlinecite{Koshelev08b, Lin08, Hu08}.    
+
+%Figure Theo_IVE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[b]
+\includegraphics[width=1.0\columnwidth,clip]{figure7}
+\caption{(color online). Simulated families of IVCs for different bath temperatures using  (a) boundary condition 0 and $\rho_{\rm {ab,min}}$ = 30\,$\mu\Omega$cm, (b) boundary condition 0 and $\rho_{\rm {ab,min}}$ = 20\,$\mu\Omega$cm and (c) boundary condition 1 and $\rho_{\rm {ab,min}}$ = 30\,$\mu\Omega$cm. 
+For currents between 5.6\,mA and 37.5\,mA IVCs are displayed for bath temperatures between 28\,K and 68\,K, with a temperature step of 4\,K between adjacent curves. For currents below 5.6\,mA the bath temperature varies between 28\,K and 71\,K and the temperature step between adjacent curves is 1\,K. The color scale indicates the power $q_{||}$ dissipated by in-plane currents oscillating at the Josephson frequency. Graph (d) is based on the current and voltage data of graph (c) and uses the relative excess voltage $V/N\Phi_0f_e -1 $ as color scale. 
+}
+\label{fig:theo_IVE}
+\end{figure}
+%Figure end %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Figs. \ref{fig:theo_IVE} (a), (b) and (c) show simulated families of IVCs for different bath temperatures and three sets of parameters: (a) boundary condition 0 and $\rho_{\rm {ab,min}}$ = 30\,$\mu\Omega$cm, (b) boundary condition 0 and $\rho_{\rm {ab,min}}$ = 20\,$\mu\Omega$cm and (c) boundary condition 1 and $\rho_{\rm {ab,min}}$ = 30\,$\mu\Omega$cm. All  other model parameters are the same for the three graphs. For currents between 5.6\,mA and 37.5\,mA the IVCs are displayed for bath temperatures between 28\,K and 68\,K, with a temperature step of 4\,K between adjacent curves. For currents below 5.6\,mA the bath temperature varies between 28\,K and 71\,K and the temperature step between adjacent curves is 1\,K. The color scale indicates the power $q_{||}$ dissipated in-plane currents oscillating at the Josephson frequency. 
+
+The overall shape of the calculated IVCs at a given bath temperature is nearly the same for all three graphs and it is not too far from the experimental IVCs shown in Fig. \ref{fig:IVE1}. In the simulated curves the high-bias regime, where a hot spot has formed, starts at currents above about 7\,mA. In this high-bias regime the values for $q_{||}$ are very small in Fig. \ref{fig:theo_IVE} (a). Only in a few points $q_{||}$ is on the order of 5\,$\mu$W. In contrast, in Figs. \ref{fig:theo_IVE} (b) and (c) one observes an ``emitting'' regime at high bias, where in addition to a hot spot standing waves have formed. It in fact has turned out during many simulations that for high in-plane damping (low values of $\rho_{\rm {ab,min}}$) standing-wave-formation is robust in the presence of a hot spot. For increasing values of $\rho_{\rm {ab,min}}$ the stack becomes increasingly more instable against the formation of out-of-phase modes or disordered phase distributions resulting in a loss of in-phase resonant modes. The precise value of $\rho_{\rm {ab,min}}$ depends on the other model parameters and on the boundary condition used, cf. Figs. \ref{fig:theo_IVE} (c), but in most cases requires values well above 20\,$\mu\Omega$cm, which is on the upper end or even exceeds the values expected from microwave conductivity measurements. We have further seen in other simuations that in the high-bias regime the formation of collective resonant modes becomes instable under the effect of vertical gradients in junction parameters, e.g. the out-of-plane resistance. This may also contribute to the non-observability of the high-bias emission for some samples.
+
+In the low-bias regime the temperature variation in the stack is smooth, exhibiting a parabolic shape with a maximum in the center of the stack, which is typically 2--3\,K above bath temperature. In this regime we cannot find standing waves at high voltages, e. g. above 1.2\,V for the curves shown in Figs. \ref{fig:theo_IVE} (a), (b) and (c). Even \textit{triggered} waves die out in this regime. Standing waves, leading to large values of $q_{||}$, are observed for voltages between 0.3\,V and 1.1\,V (0.33--1.57\,mV per junction) and for currents below about 6\,mA. In this regime different $(0,m)$ modes are excited, with $m$ between 3 and 7. 
+The overall shape of the region where resonances have formed resembles the emitting region in the experimental data, although the current and voltage ranges, where sample 1 emits, are somewhat larger than in simulation. Different from experiment, however, the calculated data look smooth and do not exhibit a stripe-like modulation. 
+Nonetheless, comparing all three graphs, it seems likely that at least the overall features seen for the experimental sample 1 can be reproduced well in simulations, given some more fine-tuning of the model parameters. 
+
+%Figure Vexcess %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[b]
+\includegraphics[width=1.0\columnwidth,clip]{figure8}
+\caption{(color online). For the model parametes  of Fig. \ref{fig:theo_IVE} (c): (a) Low-bias part of the IVC at $T_{\rm b}$ = 47\,K and (b) segment-resolved voltages per junction $V_k/G$ vs. segment index $k$ for normalized bias currents $I/I_{\rm c0}$ between 0.1 and 0.07 in steps of 0.025, with $I_{\rm c0}$ = 37.5\,mA. The color scale in (a) indicates the power $q_{||}$. 
+}
+\label{fig:Vexcess}
+\end{figure}
+%Figure end %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Let us turn to a more detailed discussion of the low-bias regime. In experiment it has been seen that the voltage $V$ across the stack can exceed by around 10$\%$ the voltage expected from the Josephson relation when all junction are locked to some resonant mode. To investigate this in our simulations we plot the quantity $V/N\Phi_0f_e - 1$, yielding the relative excess voltage compared to the case when all junctions are locked to a resonance, for a large number of data points. The result is shown in Fig. \ref{fig:theo_IVE} (d) for the IVC families plotted in Fig. \ref{fig:theo_IVE} (c). We observe an excess voltage of up to 10$\%$ in the region of strong low-bias emission. Another region with excess voltages in the 2$\%$  range appears at high bias, in a region where $q_{||}$ is relatively low. Except for this region the excess voltage at high bias is almost zero.
+
+To adress the excess voltage in the low-bias regime further we plot in Fig. \ref{fig:Vexcess} (a) the low-bias part of the IVC at $T_{\rm b}$ = 47\,K and in Fig.  \ref{fig:Vexcess} (b) we plot for selected normalized bias currents the segment-resolved voltage per junction vs. the segment index $k$ (running from 1 to 50). In (a) the color scale is given by $q_{||}$. For currents between 3.5\,mA and 2.6\,mA an $m = 5$ mode has developed in the stack.  One  notes in Fig.  \ref{fig:Vexcess} (a) that the maximum value of $q_{||}$ is reached at the very end of the resistive branch, i.e. right before large groups of junctions switch back to the zero-voltage state. One further notes that in the current range between 3.66\,mA and 2.72\,mA, where the $m = 5$ mode has formed, the slope of the IVC is almost linear, a feature which can at least sometimes be seen in the experimental IVCs. In this current range, with decreasing current, the excess voltage increases from 2.1$\%$ to 8.2$\%$. For the lowest bias point in the fully resistive state, exhibiting the highest value of $q_{||}$, the excess voltage is even larger, 13$\%$. The curves in Fig. \ref{fig:Vexcess} (b) are an indicator which parts of the stack are locked to the resonant mode (for phase-locked segments the voltages $V_k$ are identical). For a normalized current $I/I_{\rm c0}$ of 0.1 ($I_{\rm c0}$ = 37.5\,mA) the $m$ = 5 resonance has not yet developed. The resonance develops at lower current values, however only the inner segments of the stack are locked to the resonance while the voltage across the segments located near the top and bottom part of the stack is higher, i.e Josephson currents in these segments oscillate at higher frequencies. 
+%In fact it turns out that these segments are unlocked. Thus, for example in Fourier transforms of the total voltage across the stack one only finds a single dominant peak which is due to the segments that are locked to the resonance.  
+With decreasing current the number of locked segments increases, however even for $I/I_{\rm c0}$ = 0.07, the bias for which $q_{||}$ is highest, the phase lock is incomplete and consequently there is a positive excess voltage.
+
+%Figure ResoTb %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[b]
+\includegraphics[width=1.0\columnwidth,clip]{figure9}
+\caption{(color online). Power  $q_{||}$ vs. emission frequency $f_{\rm e}$ for different resonant modees between $m$ = 3 and $m$ = 6 and (a) boundary condition 0 and $\rho_{\rm {ab,min}}$ = 30\,$\mu\Omega$cm, (b) boundary condition 0 and $\rho_{\rm {ab,min}}$ = 20\,$\mu\Omega$cm and (c) boundary condition 1 and $\rho_{\rm {ab,min}}$ = 30\,$\mu\Omega$cm. For the parameters of(c), graph (d) shows $V_k/G$ vs. the segment index $k$. Thick lines are for the $m$ = 5 mode, thin lines for the $m$ = 4 mode. 
+To get the data in (a) to (d) the bath temperature is varied in steps on 1\,K. Selected values of $T_{\rm b}$ are indicated in (d). In (a) the leftmost points are calculated for $T_{\rm b}$ = 50\,K ($m$ = 6), 51\,K ($m$ = 5), 55\,K ($m$ = 4) and 62\,K ($m$ = 3). In (b) the corresponding values are 47\,k $m$ = 5), 48\,K ($m$ = 4) and 56\,K ($m$ = 3), and in (c) the leftmost points are calculated at 49\,K ($m$ = 6 and 5, 51\,K ($m$ = 4) and 54\,K ($m$ = 3). 
+}
+\label{fig:ResoTb}
+\end{figure}
+%Figure end %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Another important experimental observation was the clear discreteness of the resonant frequencies, c.f. Fig. \ref{fig:eval1}. This is clearly different from our simulations where the resonant modes seem to strongly overlap. To investigate this more clearly we trigger resonant modes between $m$ = 3 and $m$ = 6 for a fixed normalized current $I/I_{\rm c0}$ = 0.1 and vary the bath temperature to change the voltage across the stack and also the resonant frequency. Results are shown in Figs. \ref{fig:ResoTb} (a), (b) and (c) where we plot $q_{||}$ vs. the ``emission frequency'' $f_{\rm e}$. The graphs are for different model parameters, (a) boundary condition 0 and $\rho_{\rm {ab,min}}$ = 30\,$\mu\Omega$cm, (b) boundary condition 0 and $\rho_{\rm {ab,min}}$ = 20\,$\mu\Omega$cm and (c) boundary condition 1 and $\rho_{\rm {ab,min}}$ = 30\,$\mu\Omega$cm. 
+As it should be expected for a resonance, $q_{||}$ for each mode runs over a maximum as a function of $f_{\rm e}$. In all cases the resonances strongly overlap, pointing to a low quality factor of all modes. This seems to be a real difference to the experimental observation. To resolve the issue one could assume that $\rho_{\rm {ab,min}}$ is significantly higher than expected. Another possibility could be that, for some reason, resonant modes are only excited near their respective maxima. 
+
+Let us discuss the different curves in Figs. \ref{fig:ResoTb} (a), (b) and (c) in more detail. In all curves the rightmost point in each curve is for the highest bath temperature where a given resonance turned out to be stable. For the subsequent points the bath temperature is decreased in steps of 1\,K. In Fig. \ref{fig:ResoTb} (a) the leftmost points are calculated for $T_{\rm b}$ = 50\,K ($m$ = 6), 51\,K ($m$ = 5), 55\,K ($m$ = 4) and 62\,K ($m$ = 3). The maxima of the different curves occur at average stack temperatures of 57\,K ($m$ = 6), 58.5\,K ($m$ = 5), 62.5\,K ($m$ = 4) and 66\,K ($m$ = 3). From the respective values of $f_{\rm e}$ we calculate mode velocities $c_1 = f_{\rm e}/Lm$ around 4.6$\times$10$^7$\,m/s which is about 30$\%$ lower than the value of 7$\times$10$^7$\,m/s found in experiment. From an analytic expression for $c_1$ \cite{Wang09a}, which in fact does not take Josephson vortex formation into account and which is derived in the limit $\rho_{ab} \rightarrow \infty$, one would expect that $c_1$ decreases from 4.4$\times$10$^7$\,m/s to 3.4$\times$10$^7$\,m/s in the temperature range where the maxima in the $m$ = 3 -- 6 modes occur. Thus, the actual values for $c_1$ observed in simulations are somewhat higher and less temperature dependent than the values of $c_1$ predicted by the analytic expression. For the data of Fig. \ref{fig:ResoTb} (b) the corresponding mode velocities are found as 5.5--6$\times$10$^7$\,m/s, and for the data of Fig. \ref{fig:ResoTb} (b) the mode velocities decrease from 6.7$\times$10$^7$\,m/s ($m$ = 3) to 5$\times$10$^7$\,m/s ($m$ = 6). While some of these numbers approach the experimental value, fine-tuning of parameters to make $c_1$ temperature independent seems to be unnatural and we must confess that we do not understand why the resonant modes are so well separated in experiment, with a constant and temperature-independent mode velocity $c_1$. 
+
+Finally, in Fig. \ref{fig:ResoTb} (d) we show the segment-resolved voltage per junction for the $m$ = 6 and $m$ = 5 modes of Fig. \ref{fig:ResoTb} (c). Thick lines are for $m$ = 5, thin lines for $m$ = 4. Like in Fig. \ref{fig:Vexcess} (b) only the inner segments are locked to the resonance, while voltage across the outer segments is higher. Note that in Fig. \ref{fig:Vexcess} the resonances appeared spontaneously while in Fig. \ref{fig:ResoTb} they are triggered. Thus, the number of locked segments is in general higher in Fig. \ref{fig:ResoTb} (d) than in Fig. \ref{fig:Vexcess} (b). Further note that at a fixed bias the number of locked segments differs for the two modes shown. Thus, if a transition between the two modes would occur, also the excess voltage would change, a feature which fits to the expermental observations. 
+
+
+\section{Summary}
+\label{sec:Summary}
+In summary we have performed a detailed investigation of THz emission properties related to resonant cavity modes under different bias conditions. We discuss data for two intrinsic Josephson junction stacks of the same geometry and a junction number of about 700. The stacks are fabricated, respectively, from an underdopend and an optimally doped BSCCO single crystal. 
+In the low-bias regime THz emission was found for both stacks.  At high bias, in the presence of a hot spot, only the optimally doped stack emitted THz radiation. At high bias the emission frequency was continuously tunable by changing the bias current and the bath temperature. By contrast, at low bias the emission frequencies $f_{\rm e}$ were remarkably discrete and temperature independent for both stacks. The values of $f_{\rm e}$ point to the formation of $(0,m)$ cavity modes with $m$ = 3 to 6. The total voltage $V$ across the stack varies much stronger than $f_{\rm e}$, and there seems to be an excess voltage indicating groups of junctions that are unlocked. In these junctions the Josephson current seems to oscillate at a higher frequency. For the case of the underdoped stack we performed intensive numerical simulations based on coupled sine Gordon equations combined with heat diffusion equations. Overall features, like the shape of the current voltage characteristics, the appearance of $(0,m)$ cavity modes with $m$ = 3 to 6, the absence of high-bias emission, the temperature and voltage regions where emission occurs at low bias, or the appearance of an excess voltage, can be reproduced well and point to an unexpected large value of the in-plane resistivity.  However, in our simulations the different resonant modes strongly overlap for realistic parameters and the mode velocity is typically temperature dependent and lower than in experiment. The reason for this is presently unclear.
+
+%we discussed the radiation characteristics under different temperature conditions for two mesas, which were fabricated by underdoped and optimally doped BSCCO crystal, respectively. The experimental results suggest that the existence of the adequate matching conditions between the geometrical cavity and the $a.c.$ Josephson current. We find that under high-bias currents, when a hot spot has formed in the stack, the emission frequency $f_{\rm e}$ could be continuously tunable by changing the bias current and the bath temperature. Moreover, the number of active junctions is relatively constant. This results in a good phase locking all IJJs with the presence of a hot spot. Under the low-bias regime, the emission frequencies could be tunable only at some fixed values, which is consistent with cavity resonance modes along the long side of stacks. Besides, the number of junctions is not constant any more. At the same frequency, the number of active junctions decreases as the bias voltage declines. However, if the emission regime shifts to a lower mode, the number of active junctions would suddenly increase. The radiation characteristics clearly indicate and confirm that the cavity-enhancement mechanism for the terahertz radiation is working properly.
+
+\acknowledgements
+We gratefully acknowledge financial support by the National Natural Science Foundation of China (Nos. 61727805, 61611130069, 11234006, 61521001, 61501220, 61771234), Jiangsu Key Laboratory of Advanced Techniques for Manipulating Electromagnetic Waves, the RFBR grant 17-52-12051, and the Deutsche Forschungsgemeinschaft via project KL930-13/2.
+
+\bibliography{HighLowBias}
+
+
+
+
+\end{document}
+
+
+
+
